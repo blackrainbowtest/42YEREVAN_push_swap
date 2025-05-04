@@ -6,7 +6,13 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:44:49 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/03 16:44:50 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/04 18:37:11 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef PUSHSWAP_H
+# define PUSHSWAP_H
+
+
+
+#endif
