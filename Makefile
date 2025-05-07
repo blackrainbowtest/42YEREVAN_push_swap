@@ -2,19 +2,21 @@ NAME := push_swap
 
 cc := cc
 
-CFLAGS := -Wall -Wextra -Werror
+#CFLAGS := -Wall -Wextra -Werror
 
 RM := rm -f
 
 # C sources
 SRCS := src/main.c\
-		libft/libft.a\
+		src/utils_error.c\
+
+OBJS := $(SRCS:.c=.o)
 
 #SRCSB
 
-$(NAME) :
-		make bonus -C libft
-		$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
+$(NAME): $(OBJS)
+		make -C libft
+		$(CC) $(CFLAGS) $(OBJS) libft/libft.a -o $(NAME)
 
 all : $(NAME)
 
@@ -23,7 +25,7 @@ fclean : clean
 		make fclean -C libft
 
 clean :
-		$(RM) $(NAME)
+		$(RM) $(OBJS)
 		make clean -C libft
 
 re : fclean all

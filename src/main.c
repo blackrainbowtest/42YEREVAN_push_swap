@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/03 16:45:34 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/03 16:47:00 by aramarak         ###   ########.fr       */
+/*   Created: 2025/05/07 19:13:59 by aramarak          #+#    #+#             */
+/*   Updated: 2025/05/07 19:17:55 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,15 @@
 
 int main(int argc, char **argv)
 {
-    if (argc == 1)
-        return (0);
-    
-    if (argc == 2)
-        
-    return (0);
+	if (argc == 1)
+	{
+		ft_error();
+		return (EXIT_FAILURE);
+	}
+	if (argc == 2)
+	{
+		
+	}
+	return (EXIT_SUCCESS);
 }
+
