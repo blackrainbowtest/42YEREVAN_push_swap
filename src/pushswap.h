@@ -34,6 +34,11 @@ typedef struct s_data
     int			max_size;
 }				t_data;
 
+// utils_error.c
 void	ft_error(void);
+
+// init.c
+void	init_data(t_data *data);
+t_stack	*init_stack_node(int value);
 
 #endif

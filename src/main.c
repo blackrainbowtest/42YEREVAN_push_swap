@@ -14,15 +14,14 @@
 
 int main(int argc, char **argv)
 {
-	if (argc == 1)
-	{
+	t_data	*data;
+	if (argc < 2)
 		ft_error();
-		return (EXIT_FAILURE);
-	}
-	if (argc == 2)
-	{
-		
-	}
+	data = malloc(sizeof(t_data));
+	if (!data)
+		ft_error();
+	init_data(t_data *data);
+
 	return (EXIT_SUCCESS);
 }
 
