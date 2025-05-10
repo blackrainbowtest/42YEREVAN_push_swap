@@ -10,7 +10,7 @@ LOGS ?= 1
 VERBOSE ?= 0  # 1 для вывода команд, 0 для без вывода
 
 # sources
-SRCS := src/main.c src/init.c src/utils_error.c src/parsing.c
+SRCS := src/main.c src/init.c src/utils_error.c src/parsing.c src/utils_checkers.c
 OBJS := $(SRCS:.c=.o)
 
 # libraries
@@ -45,7 +45,7 @@ test: all
 ifeq ($(LOGS),1)
 	$(QUIET)echo "=== TEST START ==="
 	$(QUIET)./$(NAME) 3 2 1
-	$(QUIET)./$(NAME) "4 5 1 2 3"
+	$(QUIET)./$(NAME) "4 -5 1 2 3"
 	$(QUIET)echo "=== TEST END ==="
 else
 	$(QUIET)./$(NAME) 3 2 1 > /dev/null

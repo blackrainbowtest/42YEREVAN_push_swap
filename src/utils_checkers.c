@@ -1,0 +1,60 @@
+#include "pushswap.h"
+
+int	ft_arrlen(char **arr)
+{
+	int	len = 0;
+
+	while (arr[len])
+		len++;
+	return (len);
+}
+
+void	ft_only_digits(char **values, t_data *data, int ind)
+{
+	int i;
+
+	i = 0;
+	if (values[ind][i] == '-' || values[ind][i] == '+')
+		i++;
+
+	if (!values[ind][i])
+	{
+		ft_free(values);
+		ft_exit_error(data, NULL);
+	}
+	while (values[ind][i])
+	{
+		if (values[ind][i] < '0' || values[ind][i] > '9')
+		{
+			ft_free(values);
+			ft_exit_error(data, NULL);
+		}
+		i++;
+	}
+}
+
+int	*ft_check_values(char **values, t_data *data)
+{
+	int	*int_values;
+	int	i;
+	int len;
+
+	len = ft_arrlen(values);
+	int_values = malloc(sizeof(int) * (len));
+	if (!int_values)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		ft_only_digits(values, data, i);
+		int_values[i] = ft_atoi(values[i]);
+		if (int_values[i] == INT_MAX || int_values[i] == INT_MIN)
+		{
+			free(int_values);
+			return (NULL);
+		}
+		i++;
+	}
+	data->max_size = len;
+	return (int_values);
+}

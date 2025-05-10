@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:44:49 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/10 14:07:59 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/10 19:51:31 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ void	ft_free_stack(t_stack *stack);
 void	ft_exit_success(t_data *data, void *ptr);
 char	**ft_free(char **split);
 
+// utils_checkers.c
+int		*ft_check_values(char **values, t_data *data);
+int		ft_arrlen(char **arr);
+void	ft_only_digits(char **values, t_data *data, int ind);
+
 // init.c
 void	init_data(t_data *data);
 t_stack	*init_stack_node(int value);
@@ -48,7 +53,9 @@ t_stack	*init_stack_node(int value);
 // parsing.c
 void	parse_and_fill(t_data *data, int argc, char **argv);
 char	**ft_get_all_values(int argc, char **argv);
-int		*ft_check_values(char **values, t_data *data);
-int		ft_arrlen(char **arr);
+
+// utils_checkers.c
+
+
 
 #endif
