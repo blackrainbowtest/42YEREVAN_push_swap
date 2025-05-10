@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:44:49 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/07 19:15:42 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/10 12:20:09 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 // radix sort
 typedef struct s_stack
 {
-	void			*value;
+	int			    value;
     int				index;
 	struct s_stack	*next;
     struct s_stack	*prev;
@@ -36,9 +36,19 @@ typedef struct s_data
 
 // utils_error.c
 void	ft_error(void);
+void	ft_exit_error(t_data *data, void *ptr);
+void	ft_free_stack(t_stack *stack);
+void	ft_exit_success(t_data *data, void *ptr);
+char	**ft_free(char **split);
 
 // init.c
 void	init_data(t_data *data);
 t_stack	*init_stack_node(int value);
+
+// parsing.c
+void	parse_and_fill(t_data *data, int argc, char **argv);
+char	**ft_get_all_values(int argc, char **argv);
+int		*ft_check_values(char **values, t_data *data);
+int		ft_arrlen(char **arr);
 
 #endif

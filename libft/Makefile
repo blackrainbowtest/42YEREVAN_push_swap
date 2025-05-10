@@ -15,6 +15,9 @@ CSRCB := ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 OSRC = $(CSRC:.c=.o)
 OSRCB = $(CSRCB:.c=.o)
 
+# Define path to the library
+QUIET ?= @
+
 # Define flags
 FLAGS := -Wall -Werror -Wextra
 
@@ -30,7 +33,7 @@ NAME := libft.a
 # Define how must compile all C files to O files
 # compiler|flags|only compile|$< current file name|set name as|replace file type .c to .o
 .c.o:
-	${CC} ${FLAGS} -c $< -o $@
+	$(QUIET)${CC} ${FLAGS} -c $< -o $@
 
 # Build my library
 # ar - Create/Modify archive
@@ -38,21 +41,21 @@ NAME := libft.a
 # c - create new archive
 # s - create symbol index
 ${NAME}: ${OSRC}
-	ar rcs $@ $^
+	$(QUIET)ar rcs $@ $^
 
 # Build my library
 all: ${NAME}
 
 bonus: ${NAME} ${OSRCB}
-	ar rcs ${NAME} ${OSRCB}
+	$(QUIET)ar rcs ${NAME} ${OSRCB}
 
 # clean obj files only ${OSRCB}
 clean:
-	${RM} ${OSRC} ${OSRCB}
+	$(QUIET)${RM} ${OSRC} ${OSRCB}
 
 # clean all files ${bonus}
 fclean: clean
-	${RM} ${NAME} ${bonus}
+	$(QUIET)${RM} ${NAME} ${bonus}
 
 # clean all files and compile again
 re: fclean all

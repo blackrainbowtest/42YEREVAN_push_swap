@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 19:13:59 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/07 19:17:55 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/10 12:08:31 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ int main(int argc, char **argv)
 	data = malloc(sizeof(t_data));
 	if (!data)
 		ft_error();
-	init_data(t_data *data);
+	init_data(data);
+	parse_and_fill(data, argc, argv);
 
+	ft_exit_success(data, NULL);
 	return (EXIT_SUCCESS);
 }
 
