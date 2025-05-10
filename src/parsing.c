@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 11:22:01 by root              #+#    #+#             */
-/*   Updated: 2025/05/10 12:22:03 by root             ###   ########.fr       */
+/*   Updated: 2025/05/10 12:24:20 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,26 +48,6 @@ int	*ft_check_values(char **values, t_data *data)
 	return (int_values);
 }
 
-void	parse_and_fill(t_data *data, int argc, char **argv)
-{
-	char	**unchecked_values;
-	int		*values;
-
-	unchecked_values = ft_get_all_values(argc, argv);
-	if (!unchecked_values)
-		ft_exit_error(data, NULL);
-	values = ft_check_values(unchecked_values, data);
-	if (!values)
-		ft_exit_error(data, unchecked_values);
-	for (int i = 0; i < data->max_size; i++)
-	{
-		printf("%d ", values[i]);
-	}
-	data->max_size = argc - 1;
-	ft_free(unchecked_values);
-	free(values);
-}
-
 char	**ft_get_all_values(int argc, char **argv)
 {
 	char	**all_values;
@@ -93,4 +73,27 @@ char	**ft_get_all_values(int argc, char **argv)
 		all_values[argc - 1] = NULL;
 	}
 	return (all_values);
+}
+
+/*
+** some info here soon
+*/
+void	parse_and_fill(t_data *data, int argc, char **argv)
+{
+	char	**unchecked_values;
+	int		*values;
+
+	unchecked_values = ft_get_all_values(argc, argv);
+	if (!unchecked_values)
+		ft_exit_error(data, NULL);
+	values = ft_check_values(unchecked_values, data);
+	if (!values)
+		ft_exit_error(data, unchecked_values);
+	for (int i = 0; i < data->max_size; i++)
+	{
+		printf("%d ", values[i]);
+	}
+	data->max_size = argc - 1;
+	ft_free(unchecked_values);
+	free(values);
 }
