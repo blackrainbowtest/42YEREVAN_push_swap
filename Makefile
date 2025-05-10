@@ -53,4 +53,8 @@ else
 endif
 	$(QUIET)$(MAKE) clean
 
+val: all
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) "3 2 1"
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) 4 5 1 2 3
+
 .PHONY: all clean fclean re test
