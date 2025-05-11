@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:44:49 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/10 19:51:31 by root             ###   ########.fr       */
+/*   Updated: 2025/05/11 10:01:11 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ t_stack	*init_stack_node(int value);
 void	parse_and_fill(t_data *data, int argc, char **argv);
 char	**ft_get_all_values(int argc, char **argv);
 
-// utils_checkers.c
+// indexing.c
+int		*copy_and_sort(int *src, int len);
+void	bubble_sort(int *arr, int len);
 
 
 

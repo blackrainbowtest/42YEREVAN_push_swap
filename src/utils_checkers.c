@@ -33,21 +33,21 @@ void	ft_only_digits(char **values, t_data *data, int ind)
 	}
 }
 
-int	*ft_check_values(char **values, t_data *data)
+int	*ft_check_values(char **unchecked_values, t_data *data)
 {
 	int	*int_values;
 	int	i;
 	int len;
 
-	len = ft_arrlen(values);
+	len = ft_arrlen(unchecked_values);
 	int_values = malloc(sizeof(int) * (len));
 	if (!int_values)
-		return (NULL);
+		ft_exit_error(data, unchecked_values);
 	i = 0;
 	while (i < len)
 	{
-		ft_only_digits(values, data, i);
-		int_values[i] = ft_atoi(values[i]);
+		ft_only_digits(unchecked_values, data, i);
+		int_values[i] = ft_atoi(unchecked_values[i]);
 		if (int_values[i] == INT_MAX || int_values[i] == INT_MIN)
 		{
 			free(int_values);

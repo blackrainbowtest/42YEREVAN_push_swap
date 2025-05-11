@@ -1,4 +1,22 @@
-#include <pushswap.h>
+#include "pushswap.h"
+
+int	*copy_and_sort(int *src, int len)
+{
+	int	*sorted;
+	int	i;
+
+	sorted = malloc(sizeof(int) * len);
+	if (!sorted)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		sorted[i] = src[i];
+		i++;
+	}
+	bubble_sort(sorted, len);
+	return (sorted);
+}
 
 void	bubble_sort(int *arr, int len)
 {
@@ -27,4 +45,16 @@ void	bubble_sort(int *arr, int len)
 			break;
 		i++;
 	}
+}
+
+int	find_index(int *sorted, int len, int value)
+{
+	int	i = 0;
+	while (i < len)
+	{
+		if (sorted[i] == value)
+			return (i);
+		i++;
+	}
+	return (-1);
 }
