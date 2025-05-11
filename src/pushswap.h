@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:44:49 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/11 13:39:30 by root             ###   ########.fr       */
+/*   Updated: 2025/05/11 14:53:12 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,9 @@ void	ft_only_digits(char **values, t_data *data, int ind);
 
 // init.c
 void	init_data(t_data *data);
-t_stack	*init_stack_node(int value, int index, t_stack *prev);
+t_stack	*init_stack_node(int value, int index);
 void	fill_stack_a(t_data *data, int *values, int *sorted);
+void	stack_add_back(t_stack **stack, t_stack *new);
 
 // parsing.c
 void	parse_and_fill(t_data *data, int argc, char **argv);
@@ -58,6 +59,7 @@ char	**ft_get_all_values(int argc, char **argv);
 // indexing.c
 int		*copy_and_sort(int *src, int len);
 void	bubble_sort(int *arr, int len);
+int		find_index(int *sorted, int len, int value);
 
 
 

@@ -6,12 +6,11 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 14:07:51 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/11 13:42:18 by root             ###   ########.fr       */
+/*   Updated: 2025/05/11 14:54:38 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-#include <stdio.h>
 
 char	**ft_get_all_values(int argc, char **argv)
 {
