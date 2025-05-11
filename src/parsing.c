@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 14:07:51 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/11 12:23:38 by root             ###   ########.fr       */
+/*   Updated: 2025/05/11 13:42:18 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,21 +52,12 @@ void	parse_and_fill(t_data *data, int argc, char **argv)
 	unchecked_values = ft_get_all_values(argc, argv);
 	if (!unchecked_values)
 		ft_exit_error(data, NULL);
-	values = ft_check_values(unchecked_values, data);		
+	values = ft_check_values(unchecked_values, data);
+	ft_free(unchecked_values);	
 	sorted_values = copy_and_sort(values, data->max_size);
 	if (!sorted_values)
-	{
-		ft_free(unchecked_values);
 		ft_exit_error(data, values);
-	}
-	
-	// check outputs
-	for (int i = 0; i < data->max_size; i++)
-	{
-		printf("%d ", values[i]);
-	}
-	printf("\n");
-	ft_free(unchecked_values);
-	// ft_free(sorted_values);
+	fill_stack_a(data, values, sorted_values);
+	free(sorted_values);
 	free(values);
 }

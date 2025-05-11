@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 14:07:39 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/10 14:07:40 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/11 13:39:17 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,20 @@ void	init_data(t_data *data)
 	data->max_size = 0;
 }
 
-t_stack	*init_stack_node(int value)
+t_stack	*init_stack_node(int value, int index, t_stack *prev)
 {
 	t_stack *node;
 	node = malloc(sizeof(t_stack));
 	if (!node)
 		ft_error();
 	node->value = value;
-	node->index = -1;
+	node->index = index;
 	node->next = NULL;
-	node->prev = NULL;
+	node->prev = prev;
 	return (node);
+}
+
+void	fill_stack_a(t_data *data, int *values, int *sorted)
+{
+	
 }
