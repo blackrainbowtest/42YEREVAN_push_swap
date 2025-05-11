@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:44:49 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/11 14:53:12 by root             ###   ########.fr       */
+/*   Updated: 2025/05/11 19:20:44 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_data
 // utils_error.c
 void	ft_error(void);
 void	ft_exit_error(t_data *data, void *ptr);
-void	ft_free_stack(t_stack *stack);
+void	ft_free_stack(t_stack **stack);
 void	ft_exit_success(t_data *data, void *ptr);
 char	**ft_free(char **split);
 

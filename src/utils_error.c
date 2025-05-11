@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 14:08:06 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/10 14:08:07 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/11 19:21:05 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	ft_exit_error(t_data *data, void *ptr)
 	if (data)
 	{
 		if (data->a)
-			ft_free_stack(data->a);
+			ft_free_stack(&data->a);
 		if (data->b)
-			ft_free_stack(data->b);
+			ft_free_stack(&data->b);
 		free(data);
 	}
 	write(2, "Error\n", 6);
@@ -41,23 +41,25 @@ void	ft_exit_success(t_data *data, void *ptr)
 	if (data)
 	{
 		if (data->a)
-			ft_free_stack(data->a);
+			ft_free_stack(&data->a);
 		if (data->b)
-			ft_free_stack(data->b);
+			ft_free_stack(&data->b);
 		free(data);
 	}
 	exit(EXIT_SUCCESS);
 }
 
-void	ft_free_stack(t_stack *stack)
+void	ft_free_stack(t_stack **stack)
 {
 	t_stack	*tmp;
 
-	while (stack)
+	if (!stack || !*stack)
+		return;
+	while (*stack)
 	{
-		tmp = stack->next;
-		free(stack);
-		stack = tmp;
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
 	}
 }
 
