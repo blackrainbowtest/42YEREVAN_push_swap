@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 14:07:51 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/12 19:11:54 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/12 19:18:55 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,13 @@ char	**ft_get_all_values(int argc, char **argv)
 
 int	has_duplicates(int *arr, int size)
 {
-	int	i = 0;
+	int	i;
+	int	j;
+
+	i = 0;
 	while (i < size - 1)
 	{
-		int	j = i + 1;
+		j = i + 1;
 		while (j < size)
 		{
 			if (arr[i] == arr[j])
