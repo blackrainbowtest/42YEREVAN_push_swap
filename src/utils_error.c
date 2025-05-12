@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 14:08:06 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/11 19:21:05 by root             ###   ########.fr       */
+/*   Updated: 2025/05/12 18:54:22 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_free_stack(t_stack **stack)
 	t_stack	*tmp;
 
 	if (!stack || !*stack)
-		return;
+		return ;
 	while (*stack)
 	{
 		tmp = (*stack)->next;

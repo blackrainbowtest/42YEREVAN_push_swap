@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   indexing.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/12 18:54:00 by aramarak          #+#    #+#             */
+/*   Updated: 2025/05/12 19:02:23 by aramarak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
 int	*copy_and_sort(int *src, int len)
@@ -42,14 +54,16 @@ void	bubble_sort(int *arr, int len)
 			j++;
 		}
 		if (!is_sorted)
-			break;
+			break ;
 		i++;
 	}
 }
 
 int	find_index(int *sorted, int len, int value)
 {
-	int	i = 0;
+	int	i;
+
+	i = 0;
 	while (i < len)
 	{
 		if (sorted[i] == value)

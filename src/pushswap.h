@@ -3,35 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:44:49 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/11 19:20:44 by root             ###   ########.fr       */
+/*   Updated: 2025/05/12 18:58:20 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSHSWAP_H
 # define PUSHSWAP_H
 
-#include "../libft/libft.h"
-#include <limits.h>
+# include "../libft/libft.h"
+# include <limits.h>
 
 // radix sort
 typedef struct s_stack
 {
-	int			    value;
-    int				index;
+	int				value;
+	int				index;
 	struct s_stack	*next;
-    struct s_stack	*prev;
+	struct s_stack	*prev;
 }					t_stack;
 
 typedef struct s_data
 {
-    t_stack		*a;
-    t_stack		*b;
-    int			size_a;
-    int			size_b;
-    int			max_size;
+	t_stack		*a;
+	t_stack		*b;
+	int			size_a;
+	int			size_b;
+	int			max_size;
 }				t_data;
 
 // utils_error.c
@@ -60,7 +60,4 @@ char	**ft_get_all_values(int argc, char **argv);
 int		*copy_and_sort(int *src, int len);
 void	bubble_sort(int *arr, int len);
 int		find_index(int *sorted, int len, int value);
-
-
-
 #endif

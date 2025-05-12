@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 14:07:39 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/11 14:53:46 by root             ###   ########.fr       */
+/*   Updated: 2025/05/12 19:01:48 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	init_data(t_data *data)
 
 t_stack	*init_stack_node(int value, int index)
 {
-	t_stack *node;
+	t_stack	*node;
+
 	node = malloc(sizeof(t_stack));
 	if (!node)
 		return (NULL);
@@ -37,12 +38,13 @@ t_stack	*init_stack_node(int value, int index)
 void	fill_stack_a(t_data *data, int *values, int *sorted)
 {
 	int		i;
+	int		index;
 	t_stack	*new;
 
 	i = 0;
 	while (i < data->max_size)
 	{
-		int index = find_index(sorted, data->max_size, values[i]);
+		index = find_index(sorted, data->max_size, values[i]);
 		new = init_stack_node(values[i], index);
 		if (!new)
 		{
@@ -60,11 +62,11 @@ void	stack_add_back(t_stack **stack, t_stack *new)
 	t_stack	*last;
 
 	if (!stack || !new)
-		return;
+		return ;
 	if (!*stack)
 	{
 		*stack = new;
-		return;
+		return ;
 	}
 	last = *stack;
 	while (last->next)

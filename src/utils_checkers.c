@@ -1,9 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_checkers.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/12 18:55:53 by aramarak          #+#    #+#             */
+/*   Updated: 2025/05/12 18:55:54 by aramarak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
 int	ft_arrlen(char **arr)
 {
-	int	len = 0;
+	int	len;
 
+	len = 0;
 	while (arr[len])
 		len++;
 	return (len);
@@ -11,12 +24,11 @@ int	ft_arrlen(char **arr)
 
 void	ft_only_digits(char **values, t_data *data, int ind)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (values[ind][i] == '-' || values[ind][i] == '+')
 		i++;
-
 	if (!values[ind][i])
 	{
 		ft_free(values);
@@ -37,7 +49,7 @@ int	*ft_check_values(char **unchecked_values, t_data *data)
 {
 	int	*int_values;
 	int	i;
-	int len;
+	int	len;
 
 	len = ft_arrlen(unchecked_values);
 	int_values = malloc(sizeof(int) * (len));

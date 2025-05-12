@@ -3,19 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 14:07:30 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/11 19:25:05 by root             ###   ########.fr       */
+/*   Updated: 2025/05/12 18:59:49 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 #include <stdio.h>
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_data	*data;
+	t_stack	*tmp;
+
 	if (argc < 2)
 		ft_error();
 	data = malloc(sizeof(t_data));
@@ -23,8 +25,7 @@ int main(int argc, char **argv)
 		ft_error();
 	init_data(data);
 	parse_and_fill(data, argc, argv);
-	// print stack	a
-	t_stack *tmp = data->a;
+	tmp = data->a;
 	while (tmp)
 	{
 		printf("Value: %d, Index: %d\n", tmp->value, tmp->index);
@@ -34,4 +35,3 @@ int main(int argc, char **argv)
 	ft_exit_success(data, NULL);
 	return (EXIT_SUCCESS);
 }
-
