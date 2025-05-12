@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 14:07:51 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/12 18:58:41 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/12 19:11:54 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,23 @@ char	**ft_get_all_values(int argc, char **argv)
 	return (all_values);
 }
 
+int	has_duplicates(int *arr, int size)
+{
+	int	i = 0;
+	while (i < size - 1)
+	{
+		int	j = i + 1;
+		while (j < size)
+		{
+			if (arr[i] == arr[j])
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
 /*
 ** some info here soon
 */
@@ -55,6 +72,8 @@ void	parse_and_fill(t_data *data, int argc, char **argv)
 	ft_free(unchecked_values);
 	sorted_values = copy_and_sort(values, data->max_size);
 	if (!sorted_values)
+		ft_exit_error(data, values);
+	if (has_duplicates(values, data->max_size))
 		ft_exit_error(data, values);
 	fill_stack_a(data, values, sorted_values);
 	free(sorted_values);

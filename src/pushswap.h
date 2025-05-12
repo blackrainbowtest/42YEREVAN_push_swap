@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:44:49 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/12 18:58:20 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/12 19:12:18 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	stack_add_back(t_stack **stack, t_stack *new);
 // parsing.c
 void	parse_and_fill(t_data *data, int argc, char **argv);
 char	**ft_get_all_values(int argc, char **argv);
+int		has_duplicates(int *arr, int size);
 
 // indexing.c
 int		*copy_and_sort(int *src, int len);

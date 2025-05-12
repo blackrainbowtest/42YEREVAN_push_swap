@@ -44,17 +44,17 @@ re: fclean all
 test: all
 ifeq ($(LOGS),1)
 	$(QUIET)echo "=== TEST START ==="
-	$(QUIET)./$(NAME) 3 2 1
+	$(QUIET)./$(NAME) 3 2 2 1
 	$(QUIET)./$(NAME) "4 -5 1 2 3"
 	$(QUIET)echo "=== TEST END ==="
 else
-	$(QUIET)./$(NAME) 3 2 1 > /dev/null
+	$(QUIET)./$(NAME) 3 2 2 1 > /dev/null
 	$(QUIET)./$(NAME) "4 5 1 2 3" > /dev/null
 endif
 	$(QUIET)$(MAKE) clean
 
 val: all
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) "3 2 1"
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) "3 2 2 1"
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) 4 5 1 2 3
 
 .PHONY: all clean fclean re test
