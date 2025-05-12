@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:44:49 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/12 19:12:18 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/12 20:37:16 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,23 @@ int		has_duplicates(int *arr, int size);
 int		*copy_and_sort(int *src, int len);
 void	bubble_sort(int *arr, int len);
 int		find_index(int *sorted, int len, int value);
+
+// op_swap.c
+void	sa(t_data *data);
+void	sb(t_data *data);
+void	ss(t_data *data);
+
+// op_push.c
+void	pa(t_data *data);
+void	pb(t_data *data);
+
+// op_rotate.c
+void	ra(t_data *data);
+void	rb(t_data *data);
+void	rr(t_data *data);
+
+// op_reverse.c
+void	rra(t_data *data);
+void	rrb(t_data *data);
+void	rrr(t_data *data);
 #endif
