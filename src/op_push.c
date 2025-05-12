@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 19:33:37 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/12 20:46:12 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/12 20:52:58 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,21 @@
  */
 void	pa(t_data *data)
 {
-	t_data	*tmp;
+	t_stack	*tmp;
 
 	if (data->b == NULL)
 		return ;
 	tmp = data->b;
+	data->b = data->b->next;
+	if (data->b)
+		data->b->prev = NULL;
+	tmp->next = data->a;
+	if (data->a)
+		data->a->prev = tmp;
+	data->a = tmp;
+	data->size_a++;
+	data->size_b--;
+	write(1, "pa\n", 3);
 }
 
 /**
@@ -43,9 +53,19 @@ void	pa(t_data *data)
  */
 void	pb(t_data *data)
 {
-	t_data	*tmp;
+	t_stack	*tmp;
 
 	if (data->a == NULL)
 		return ;
 	tmp = data->a;
+	data->a = data->a->next;
+	if (data->a)
+		data->a->prev = NULL;
+	tmp->next = data->b;
+	if (data->b)
+		data->b->prev = tmp;
+	data->b = tmp;
+	data->size_a--;
+	data->size_b++;
+	write(1, "pb\n", 3);
 }
