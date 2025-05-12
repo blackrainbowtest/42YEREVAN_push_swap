@@ -10,7 +10,8 @@ LOGS ?= 1
 VERBOSE ?= 0  # 1 для вывода команд, 0 для без вывода
 
 # sources
-SRCS := src/main.c src/init.c src/utils_error.c src/parsing.c src/utils_checkers.c src/indexing.c
+SRCS := src/main.c src/init.c src/utils_error.c src/parsing.c src/utils_checkers.c src/indexing.c\
+		src/op_push.c src/op_reverse.c src/op_rotate.c src/op_swap.c
 OBJS := $(SRCS:.c=.o)
 
 # libraries
