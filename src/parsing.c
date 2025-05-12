@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 14:07:51 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/12 19:18:55 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/12 20:26:32 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,11 @@ void	parse_and_fill(t_data *data, int argc, char **argv)
 	if (!sorted_values)
 		ft_exit_error(data, values);
 	if (has_duplicates(values, data->max_size))
+	{
+		free(sorted_values);
 		ft_exit_error(data, values);
+	}
+
 	fill_stack_a(data, values, sorted_values);
 	free(sorted_values);
 	free(values);
