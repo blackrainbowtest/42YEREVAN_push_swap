@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 19:33:37 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/12 20:52:58 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/16 19:09:10 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 /**
  * @brief Push the top element of stack B to stack A.
  * 
- * This function removes the top element from stack B and adds it to the top of stack A.
+ * This function removes the top element from stack B
+ * and adds it to the top of stack A.
  * If stack B is empty, no action is taken.
  * 
  * @param data Pointer to the data structure containing the stacks.
@@ -44,7 +45,8 @@ void	pa(t_data *data)
 /**
  * @brief Push the top element of stack A to stack B.
  * 
- * This function removes the top element from stack A and adds it to the top of stack B.
+ * This function removes the top element from stack A
+ * and adds it to the top of stack B.
  * If stack A is empty, no action is taken.
  * 
  * @param data Pointer to the data structure containing the stacks.

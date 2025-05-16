@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   op_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 19:33:45 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/15 21:37:34 by root             ###   ########.fr       */
+/*   Updated: 2025/05/16 19:05:45 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	sa(t_data *data)
+void	sa(t_data *data, int print)
 {
 	t_stack	*first;
 	t_stack	*second;
@@ -28,10 +28,11 @@ void	sa(t_data *data)
 	second->next = first;
 	first->prev = second;
 	data->a = second;
-	write(1, "sa\n", 3);
+	if (print)
+		write(1, "sa\n", 3);
 }
 
-void	sb(t_data *data)
+void	sb(t_data *data, int print)
 {
 	t_stack	*first;
 	t_stack	*second;
@@ -47,12 +48,13 @@ void	sb(t_data *data)
 	second->next = first;
 	first->prev = second;
 	data->b = second;
-	write(1, "sb\n", 3);
+	if (print)
+		write(1, "sb\n", 3);
 }
 
 void	ss(t_data *data)
 {
-	sa(data);
-	sb(data);
+	sa(data, 0);
+	sb(data, 0);
 	write(1, "ss\n", 3);
 }

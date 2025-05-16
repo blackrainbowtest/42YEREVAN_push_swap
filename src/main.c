@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 14:07:30 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/12 20:38:10 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/16 19:08:44 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int	main(int argc, char **argv)
 		ft_error();
 	init_data(data);
 	parse_and_fill(data, argc, argv);
-
-
 	tmp = data->a;
 	while (tmp)
 	{

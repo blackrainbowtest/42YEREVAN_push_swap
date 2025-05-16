@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:44:49 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/12 20:37:16 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/16 19:07:15 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void	bubble_sort(int *arr, int len);
 int		find_index(int *sorted, int len, int value);
 
 // op_swap.c
-void	sa(t_data *data);
-void	sb(t_data *data);
+void	sa(t_data *data, int print);
+void	sb(t_data *data, int print);
 void	ss(t_data *data);
 
 // op_push.c
@@ -72,12 +72,12 @@ void	pa(t_data *data);
 void	pb(t_data *data);
 
 // op_rotate.c
-void	ra(t_data *data);
-void	rb(t_data *data);
+void	ra(t_data *data, int print);
+void	rb(t_data *data, int print);
 void	rr(t_data *data);
 
 // op_reverse.c
-void	rra(t_data *data);
-void	rrb(t_data *data);
+void	rra(t_data *data, int print);
+void	rrb(t_data *data, int print);
 void	rrr(t_data *data);
 #endif
