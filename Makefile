@@ -45,11 +45,11 @@ re: fclean all
 test: all
 ifeq ($(LOGS),1)
 	$(QUIET)echo "=== TEST START ==="
-	-$(QUIET)./$(NAME) 3 2 1
+	-$(QUIET)./$(NAME) 1 2 3
 	-$(QUIET)./$(NAME) "4 -5 1 2 3"
 	$(QUIET)echo "=== TEST END ==="
 else
-	-$(QUIET)./$(NAME) 3 2 1 > /dev/null
+	-$(QUIET)./$(NAME) 1 2 3 > /dev/null
 	-$(QUIET)./$(NAME) "4 5 1 2 3" > /dev/null
 endif
 	$(QUIET)$(MAKE) clean
