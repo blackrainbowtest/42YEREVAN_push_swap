@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:44:49 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/16 19:07:15 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/16 19:19:56 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,24 @@ typedef struct s_data
 }				t_data;
 
 // utils_error.c
+char	**ft_free(char **split);
 void	ft_error(void);
 void	ft_exit_error(t_data *data, void *ptr);
 void	ft_free_stack(t_stack **stack);
 void	ft_exit_success(t_data *data, void *ptr);
-char	**ft_free(char **split);
 
 // utils_checkers.c
 int		*ft_check_values(char **values, t_data *data);
 int		ft_arrlen(char **arr);
+int		is_sorted(t_stack *stack);
 void	ft_only_digits(char **values, t_data *data, int ind);
+
 
 // init.c
 void	init_data(t_data *data);
-t_stack	*init_stack_node(int value, int index);
 void	fill_stack_a(t_data *data, int *values, int *sorted);
 void	stack_add_back(t_stack **stack, t_stack *new);
+t_stack	*init_stack_node(int value, int index);
 
 // parsing.c
 void	parse_and_fill(t_data *data, int argc, char **argv);
