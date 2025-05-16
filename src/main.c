@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 14:07:30 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/16 19:14:23 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/16 19:20:30 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	main(int argc, char **argv)
 		ft_error();
 	init_data(data);
 	parse_and_fill(data, argc, argv);
-
+	if (is_sorted(data->a))
+		ft_exit_success(data, NULL);
 
 	tmp = data->a;
 	while (tmp)
