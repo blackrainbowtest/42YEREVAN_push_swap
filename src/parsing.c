@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 14:07:51 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/12 20:37:50 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/18 14:26:55 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void	parse_and_fill(t_data *data, int argc, char **argv)
 		ft_exit_error(data, NULL);
 	values = ft_check_values(unchecked_values, data);
 	ft_free(unchecked_values);
+	if (!values)
+		ft_exit_error(data, NULL);
 	sorted_values = copy_and_sort(values, data->max_size);
 	if (!sorted_values)
 		ft_exit_error(data, values);

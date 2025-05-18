@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 18:55:53 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/18 12:12:04 by root             ###   ########.fr       */
+/*   Updated: 2025/05/18 17:18:22 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	*ft_check_values(char **unchecked_values, t_data *data)
 	{
 		ft_only_digits(unchecked_values, data, i);
 		int_values[i] = ft_atoi(unchecked_values[i]);
-		if (int_values[i] == INT_MAX || int_values[i] == INT_MIN)
+		if (int_values[i] >= INT_MAX || int_values[i] <= INT_MIN)
 		{
 			free(int_values);
 			return (NULL);
@@ -76,6 +76,7 @@ int	is_sorted(t_stack *stack)
 {
 	while (stack && stack->next)
 	{
+		printf("stack->value = %d\n", stack->value);
 		if (stack->value > stack->next->value)
 			return (0);
 		stack = stack->next;

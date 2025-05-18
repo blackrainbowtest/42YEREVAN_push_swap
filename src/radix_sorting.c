@@ -6,12 +6,11 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 15:21:19 by root              #+#    #+#             */
-/*   Updated: 2025/05/18 12:10:49 by root             ###   ########.fr       */
+/*   Updated: 2025/05/18 14:20:47 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-#include <stdio.h>
 
 void	radix_sorting(t_data *data)
 {
@@ -35,6 +34,7 @@ void	radix_sorting(t_data *data)
 			else
 				ra(data, 1);
 			j++;
+			printf("first num in stack b is %d\n", data->b->value);
 		}
 		while (data->size_b > 0)
 			pa(data);
