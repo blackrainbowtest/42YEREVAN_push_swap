@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:44:49 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/16 19:19:56 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/17 15:48:16 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,7 @@ void	rr(t_data *data);
 void	rra(t_data *data, int print);
 void	rrb(t_data *data, int print);
 void	rrr(t_data *data);
+
+// radix_sorting.c
+void	radix_sorting(t_data *data);
 #endif

@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   radix_sorting.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/10 14:07:30 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/17 23:23:34 by root             ###   ########.fr       */
+/*   Created: 2025/05/17 15:21:19 by root              #+#    #+#             */
+/*   Updated: 2025/05/18 11:33:53 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+#include <stdio.h>
 
-int	main(int argc, char **argv)
+void	radix_sorting(t_data *data)
 {
-	t_data	*data;
+	int	max_bits;
+	int	max_index;
+	int	i;
 
-	if (argc < 2)
-		ft_error();
-	data = malloc(sizeof(t_data));
-	if (!data)
-		ft_error();
-	init_data(data);
-	parse_and_fill(data, argc, argv);
-	if (is_sorted(data->a))
-		ft_exit_success(data, NULL);
-	radix_sorting(data);
-	ft_exit_success(data, NULL);
-	return (EXIT_SUCCESS);
+	max_bits = 0;
+	max_index = data->max_size - 1;
+	i = 0;
+	while (i < max_bits)
+	{
+		int j = 0;
+		int size = data->size_a;
+
+		while (j < size)
+		{
+			if (((data->a->index >> i) & 1) == 0)
+				pb(data);
+			else
+				ra(data);
+			j++;
+		}
+		while (data->size_b > 0)
+			pa(data);
+		i++;
+	}
 }
