@@ -6,12 +6,24 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 18:54:00 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/12 19:02:23 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/19 21:05:49 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
+/**
+ * @brief Copies the source array and sorts it in ascending order.
+ * 
+ * This function allocates memory for a new array, copies the elements from
+ * the source array, and then sorts the new array using the bubble sort
+ * algorithm.
+ * 
+ * @param src The source array to be copied and sorted.
+ * @param len The length of the source array.
+ * 
+ * @return A pointer to the sorted array, or NULL if memory allocation fails.
+ */
 int	*copy_and_sort(int *src, int len)
 {
 	int	*sorted;
@@ -30,6 +42,15 @@ int	*copy_and_sort(int *src, int len)
 	return (sorted);
 }
 
+/**
+ * @brief Sorts an array of integers using the bubble sort algorithm.
+ * 
+ * This function sorts the input array in ascending order using the bubble
+ * sort algorithm.
+ * 
+ * @param arr The array to be sorted.
+ * @param len The length of the array.
+ */
 void	bubble_sort(int *arr, int len)
 {
 	int	i;
@@ -59,16 +80,54 @@ void	bubble_sort(int *arr, int len)
 	}
 }
 
-int	find_index(int *sorted, int len, int value)
+/**
+ * @brief Finds the index of a value in a sorted array.
+ * 
+ * This function searches for the specified value in the sorted array
+ * and returns its index. If the value is not found, it returns -1.
+ * 
+ * @param arr The sorted array to search in.
+ * @param len The length of the sorted array.
+ * @param value The value to search for.
+ * 
+ * @return The index of the value in the sorted array, or -1 if not found.
+ */
+int	find_index(int *arr, int len, int value)
 {
 	int	i;
 
 	i = 0;
 	while (i < len)
 	{
-		if (sorted[i] == value)
+		if (arr[i] == value)
 			return (i);
 		i++;
 	}
 	return (-1);
+}
+
+/**
+ * @brief Finds the next direction for neighbor the given index in the sorted array.
+ * 
+ * This function counts the number of elements in the original array that are
+ * greater than the value at the specified index in the sorted array.
+ * 
+ * @param values The original array of values.
+ * @param sorted The sorted array of values.
+ * @param i The index of the current element in the original array.
+ * @param index The index of the current element in the sorted array.
+ * 
+ * @note I need to find sorted[index + 1] in values array and if values index
+ * is less than i i need return -1 else 1 and 0 if dont find.
+ */
+int	find_next_direction(int *values, int *sorted, int i, int index)
+{
+	int	j;
+	int	next_direction;
+
+	j = 0;
+	next_direction = 0;
+
+	
+	return (next_direction);
 }

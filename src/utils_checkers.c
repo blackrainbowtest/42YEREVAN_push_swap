@@ -6,12 +6,19 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 18:55:53 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/19 19:38:28 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/19 20:01:55 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
+/**
+ * @brief Counts the number of elements in a null-terminated array of strings.
+ * 
+ * @param arr The array of strings to count.
+ * 
+ * @return The number of strings in the array.
+ */
 int	ft_arrlen(char **arr)
 {
 	int	len;
@@ -92,12 +99,11 @@ int	*ft_check_values(char **unchecked_values, t_data *data)
 			free(int_values);
 			ft_exit_error(data, unchecked_values);
 		}
-		if (int_values[i] >= INT_MAX || int_values[i] <= INT_MIN)
+		if (int_values[i] > INT_MAX || int_values[i++] < INT_MIN)
 		{
 			free(int_values);
 			return (NULL);
 		}
-		i++;
 	}
 	data->max_size = len;
 	data->size_a = len;

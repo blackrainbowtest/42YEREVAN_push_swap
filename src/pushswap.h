@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:44:49 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/19 19:17:53 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/19 21:06:10 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_stack
 	int				index;
 	struct s_stack	*next;
 	struct s_stack	*prev;
+	int				next_direction;
 }					t_stack;
 
 typedef struct s_data
@@ -52,7 +53,7 @@ void	ft_only_digits(char **values, t_data *data, int ind);
 void	init_data(t_data *data);
 void	fill_stack_a(t_data *data, int *values, int *sorted);
 void	stack_add_back(t_stack **stack, t_stack *new);
-t_stack	*init_stack_node(int value, int index);
+t_stack	*init_stack_node(int value, int index, int next_direction);
 
 // parsing.c
 void	parse_and_fill(t_data *data, int argc, char **argv);
@@ -62,7 +63,7 @@ int		has_duplicates(int *arr, int size);
 // indexing.c
 int		*copy_and_sort(int *src, int len);
 void	bubble_sort(int *arr, int len);
-int		find_index(int *sorted, int len, int value);
+int		find_index(int *arr, int len, int value);
 
 // op_swap.c
 void	sa(t_data *data, int print);

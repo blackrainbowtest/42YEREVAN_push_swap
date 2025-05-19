@@ -6,12 +6,25 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 14:07:39 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/12 19:01:48 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/19 21:00:08 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
+/**
+ * @brief Initializes the data structure for the push_swap program.
+ * 
+ * This function sets the initial values for the data structure, including
+ * 
+ * @note data->a - Pointer to the first element of stack a.
+ * @note data->b - Pointer to the first element of stack b.
+ * @note data->size_a - Size of stack a.
+ * @note data->size_b - Size of stack b.
+ * @note data->max_size - Maximum size of the stacks.
+ * @note data->next_direction - Direction for the next operation.
+ * 0 - not set, 1 - left, 2 - right.
+ */
 void	init_data(t_data *data)
 {
 	data->a = NULL;
@@ -21,7 +34,7 @@ void	init_data(t_data *data)
 	data->max_size = 0;
 }
 
-t_stack	*init_stack_node(int value, int index)
+t_stack	*init_stack_node(int value, int index, int next_direction)
 {
 	t_stack	*node;
 
@@ -32,6 +45,7 @@ t_stack	*init_stack_node(int value, int index)
 	node->index = index;
 	node->next = NULL;
 	node->prev = NULL;
+	node->next_direction = next_direction;
 	return (node);
 }
 
@@ -39,13 +53,15 @@ void	fill_stack_a(t_data *data, int *values, int *sorted)
 {
 	int		i;
 	int		index;
+	int		next_direction;
 	t_stack	*new;
 
 	i = 0;
 	while (i < data->max_size)
 	{
 		index = find_index(sorted, data->max_size, values[i]);
-		new = init_stack_node(values[i], index);
+		next_direction = find_next_direction(values, sorted, i, index);
+		new = init_stack_node(values[i], index, next_direction);
 		if (!new)
 		{
 			free(values);

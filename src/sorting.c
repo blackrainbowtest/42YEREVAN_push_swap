@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 15:21:19 by root              #+#    #+#             */
-/*   Updated: 2025/05/19 19:32:47 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/19 20:46:53 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,14 @@ void	radix_sorting(t_data *data)
 	}
 }
 
+/**
+ * @brief Sorts a stack of two elements.
+ * 
+ * @param data The data structure containing the stacks.
+ * 
+ * @note This function swaps the two elements in stack A if they are not
+ * already sorted.
+ */
 void	fast_sort(t_data *data)
 {
 	int	a;
@@ -52,6 +60,14 @@ void	fast_sort(t_data *data)
 		sa(data, 1);
 }
 
+/**
+ * @brief Sorts a stack of three elements.
+ * 
+ * @param data The data structure containing the stacks.
+ * 
+ * @note This function sorts the three elements in stack A using a series
+ * of swaps and rotations.
+ */
 void	quick_sort(t_data *data)
 {
 	int	a;
