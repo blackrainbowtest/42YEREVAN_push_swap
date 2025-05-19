@@ -84,6 +84,8 @@ void	rra(t_data *data, int print);
 void	rrb(t_data *data, int print);
 void	rrr(t_data *data);
 
-// radix_sorting.c
+// sorting.c
 void	radix_sorting(t_data *data);
+void	fast_sort(t_data *data);
+void	quick_sort(t_data *data);
 #endif

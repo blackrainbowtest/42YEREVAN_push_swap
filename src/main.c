@@ -25,7 +25,12 @@ int	main(int argc, char **argv)
 	parse_and_fill(data, argc, argv);
 	if (is_sorted(data->a))
 		ft_exit_success(data, NULL);
-	radix_sorting(data);
+	if (data->size_a == 2)
+		fast_sort(data);
+	else if (data->size_a == 3)
+		quick_sort(data);
+	else
+		radix_sorting(data);
 	ft_exit_success(data, NULL);
 	return (EXIT_SUCCESS);
 }

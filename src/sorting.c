@@ -41,3 +41,41 @@ void	radix_sorting(t_data *data)
 		i++;
 	}
 }
+
+void	fast_sort(t_data *data)
+{
+	int	a;
+	int	b;
+
+	a = data->a->value;
+	b = data->a->next->value;
+	if (b > a)
+		sa(data, 1);
+}
+
+void	quick_sort(t_data *data)
+{
+	int	a;
+	int	b;
+	int	c;
+
+	a = data->a->value;
+	b = data->a->next->value;
+	c = data->a->next->next->value;
+	if (a > b && b < c && a < c)
+		sa(data, 1);
+	else if (a > b && b > c)
+	{
+		sa(data, 1);
+		rra(data, 1);
+	}
+	else if (a > b && b < c && a > c)
+		ra(data, 1);
+	else if (a < b && b > c && a < c)
+	{
+		sa(data, 1);
+		ra(data, 1);
+	}
+	else if (a < b && b > c && a > c)
+		rra(data, 1);
+}
