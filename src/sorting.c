@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   radix_sorting.c                                    :+:      :+:    :+:   */
+/*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 15:21:19 by root              #+#    #+#             */
-/*   Updated: 2025/05/18 14:20:47 by root             ###   ########.fr       */
+/*   Updated: 2025/05/19 19:32:47 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	radix_sorting(t_data *data)
 	i = 0;
 	while (i < max_bits)
 	{
-		int j = 0;
-		int size = data->size_a;
+		int	j = 0;
+		int	size = data->size_a;
 		while (j < size)
 		{
 			if (((data->a->index >> i) & 1) == 0)
@@ -34,7 +34,6 @@ void	radix_sorting(t_data *data)
 			else
 				ra(data, 1);
 			j++;
-			printf("first num in stack b is %d\n", data->b->value);
 		}
 		while (data->size_b > 0)
 			pa(data);

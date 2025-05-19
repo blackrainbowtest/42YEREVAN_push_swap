@@ -45,7 +45,7 @@ re: fclean all
 test: all
 ifeq ($(LOGS),1)
 	$(QUIET)echo "=== TEST START ==="
-	-$(QUIET)./$(NAME) "0 -2147483647 9487 2147483647 -2147483648"
+	-$(QUIET)./$(NAME) "99"
 	$(QUIET)echo "=== TEST END ==="
 else
 	-$(QUIET)./$(NAME) "4 -5 1 2 3" > /dev/null

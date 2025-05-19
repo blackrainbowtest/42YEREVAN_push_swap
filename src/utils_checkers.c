@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_checkers.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 18:55:53 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/18 17:18:22 by root             ###   ########.fr       */
+/*   Updated: 2025/05/19 19:38:28 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,34 @@ void	ft_only_digits(char **values, t_data *data, int ind)
 	}
 }
 
+static int	ft_atoi_safe(const char *str, int *value)
+{
+	long	result;
+	int		sign;
+
+	result = 0;
+	sign = 1;
+	while (*str == ' ' || ((*str >= 9) && (*str <= 13)))
+		str++;
+	if (*str == '-' || *str == '+')
+		if (*str++ == '-')
+			sign *= -1;
+	if (!*str)
+		return (0);
+	while (*str >= '0' && *str <= '9')
+	{
+		result = (result * 10) + (*str - '0');
+		if ((sign == 1 && result > INT_MAX)
+			|| (sign == -1 && (-result) < INT_MIN))
+			return (0);
+		str++;
+	}
+	if (*str != '\0')
+		return (0);
+	*value = (int)(result * sign);
+	return (1);
+}
+
 int	*ft_check_values(char **unchecked_values, t_data *data)
 {
 	int	*int_values;
@@ -59,7 +87,11 @@ int	*ft_check_values(char **unchecked_values, t_data *data)
 	while (i < len)
 	{
 		ft_only_digits(unchecked_values, data, i);
-		int_values[i] = ft_atoi(unchecked_values[i]);
+		if (!ft_atoi_safe(unchecked_values[i], &int_values[i]))
+		{
+			free(int_values);
+			ft_exit_error(data, unchecked_values);
+		}
 		if (int_values[i] >= INT_MAX || int_values[i] <= INT_MIN)
 		{
 			free(int_values);
@@ -76,7 +108,6 @@ int	is_sorted(t_stack *stack)
 {
 	while (stack && stack->next)
 	{
-		printf("stack->value = %d\n", stack->value);
 		if (stack->value > stack->next->value)
 			return (0);
 		stack = stack->next;

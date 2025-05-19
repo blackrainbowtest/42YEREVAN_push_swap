@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:44:49 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/18 14:20:54 by root             ###   ########.fr       */
+/*   Updated: 2025/05/19 19:17:53 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "../libft/libft.h"
 # include <limits.h>
-#include <stdio.h>
+# include <stdio.h>
 
 // radix sort
 typedef struct s_stack
@@ -47,7 +47,6 @@ int		*ft_check_values(char **values, t_data *data);
 int		ft_arrlen(char **arr);
 int		is_sorted(t_stack *stack);
 void	ft_only_digits(char **values, t_data *data, int ind);
-
 
 // init.c
 void	init_data(t_data *data);
