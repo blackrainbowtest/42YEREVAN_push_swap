@@ -122,12 +122,17 @@ int	find_index(int *arr, int len, int value)
  */
 int	find_next_direction(int *values, int *sorted, int i, int index)
 {
-	int	j;
-	int	next_direction;
+	int	next_value_index;
+	int size;
 
-	j = 0;
-	next_direction = 0;
-
-	
-	return (next_direction);
+	size = ft_arrlen(values) - 1;
+	if (index + 1 > size)
+		return (0);
+	next_value_index = find_index(values, size, sorted[index + 1]);
+	if (next_value_index == -1)
+		return (0);
+	if (next_value_index > i)
+		return (1);
+	else
+		return (-1);
 }
