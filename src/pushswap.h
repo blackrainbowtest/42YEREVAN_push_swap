@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:44:49 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/19 21:06:10 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/20 20:58:42 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int		has_duplicates(int *arr, int size);
 int		*copy_and_sort(int *src, int len);
 void	bubble_sort(int *arr, int len);
 int		find_index(int *arr, int len, int value);
+int		find_next_direction(int *values, int *sorted, int i, int index);
 
 // op_swap.c
 void	sa(t_data *data, int print);
