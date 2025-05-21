@@ -55,12 +55,16 @@ void	fill_stack_a(t_data *data, int *values, int *sorted)
 	int		index;
 	int		next_direction;
 	t_stack	*new;
+	t_arrays	arr;
 
+	arr.values = values;
+	arr.sorted = sorted;
+	arr.size = data->max_size;
 	i = 0;
 	while (i < data->max_size)
 	{
 		index = find_index(sorted, data->max_size, values[i]);
-		next_direction = find_next_direction(values, sorted, i, index);
+		next_direction = find_next_direction(&arr, i, index);
 		new = init_stack_node(values[i], index, next_direction);
 		if (!new)
 		{

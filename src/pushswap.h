@@ -36,6 +36,15 @@ typedef struct s_data
 	int			max_size;
 }				t_data;
 
+/**
+*
+*/
+typedef struct s_arrays {
+    int *values;
+    int *sorted;
+    int size;
+}				t_arrays;
+
 // utils_error.c
 char	**ft_free(char **split);
 void	ft_error(void);
@@ -64,7 +73,7 @@ int		has_duplicates(int *arr, int size);
 int		*copy_and_sort(int *src, int len);
 void	bubble_sort(int *arr, int len);
 int		find_index(int *arr, int len, int value);
-int		find_next_direction(int *values, int *sorted, int i, int index);
+int		find_next_direction(t_arrays *arr, int i, int index);
 
 // op_swap.c
 void	sa(t_data *data, int print);

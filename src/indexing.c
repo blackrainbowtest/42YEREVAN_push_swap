@@ -112,23 +112,20 @@ int	find_index(int *arr, int len, int value)
  * This function counts the number of elements in the original array that are
  * greater than the value at the specified index in the sorted array.
  * 
- * @param values The original array of values.
- * @param sorted The sorted array of values.
+ * @param arr The list of original array of values.
  * @param i The index of the current element in the original array.
  * @param index The index of the current element in the sorted array.
  * 
  * @note I need to find sorted[index + 1] in values array and if values index
  * is less than i i need return -1 else 1 and 0 if dont find.
  */
-int	find_next_direction(int *values, int *sorted, int i, int index)
+int	find_next_direction(t_arrays *arr, int i, int index)
 {
 	int	next_value_index;
-	int size;
 
-	size = ft_arrlen(values) - 1;
-	if (index + 1 > size)
+	if (index + 1 >= arr->size)
 		return (0);
-	next_value_index = find_index(values, size, sorted[index + 1]);
+	next_value_index = find_index(arr->values, arr->size, arr->sorted[index + 1]);
 	if (next_value_index == -1)
 		return (0);
 	if (next_value_index > i)
