@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:44:49 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/20 20:58:42 by root             ###   ########.fr       */
+/*   Updated: 2025/05/21 20:28:42 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,6 @@ void	rrr(t_data *data);
 void	radix_sorting(t_data *data);
 void	fast_sort(t_data *data);
 void	quick_sort(t_data *data);
+void	middle_sort(t_data *data);
+void	best_move_to_top_a(t_data *data, t_stack *node);
 #endif

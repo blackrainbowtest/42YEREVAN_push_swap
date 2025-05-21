@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 15:21:19 by root              #+#    #+#             */
-/*   Updated: 2025/05/19 20:46:53 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/21 20:29:04 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,60 @@ void	quick_sort(t_data *data)
 	}
 	else if (a < b && b > c && a > c)
 		rra(data, 1);
+}
+
+void	middle_sort(t_data *data)
+{
+	t_stack	*current;
+	int		next_index;
+	t_stack	*target;
+
+	next_index = 0;
+	while (next_index < data->max_size)
+	{
+		current = data->a;
+		target = NULL;
+		while (current)
+		{
+			if (current->index == next_index)
+			{
+				target = current;
+				break;
+			}
+			current = current->next;
+		}
+		if (!target)
+			break;
+		best_move_to_top_a(data, target);
+		pb(data);
+		next_index++;
+	}
+	while (data->size_b > 0)
+		pa(data);
+}
+
+void	best_move_to_top_a(t_data *data, t_stack *node)
+{
+	int	pos;
+	int	size;
+	t_stack *temp;
+
+	pos = 0;
+	temp = data->a;
+	while (temp && temp != node)
+	{
+		pos++;
+		temp = temp->next;
+	}
+	size = data->size_a;
+	if (pos <= size / 2)
+	{
+		while (data->a != node)
+			ra(data, 1);
+	}
+	else
+	{
+		while (data->a != node)
+			rra(data, 1);
+	}
 }

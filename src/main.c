@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 14:07:30 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/18 14:24:51 by root             ###   ########.fr       */
+/*   Updated: 2025/05/21 20:30:08 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	main(int argc, char **argv)
 		fast_sort(data);
 	else if (data->size_a == 3)
 		quick_sort(data);
+	else if (data->size_a >= 5 && data->size_a <= 100)
+		middle_sort(data);
 	else
 		radix_sorting(data);
 	ft_exit_success(data, NULL);
