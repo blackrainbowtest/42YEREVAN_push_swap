@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 15:21:19 by root              #+#    #+#             */
-/*   Updated: 2025/05/21 20:29:04 by root             ###   ########.fr       */
+/*   Updated: 2025/05/22 20:26:33 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,60 +39,6 @@ void	radix_sorting(t_data *data)
 			pa(data);
 		i++;
 	}
-}
-
-/**
- * @brief Sorts a stack of two elements.
- * 
- * @param data The data structure containing the stacks.
- * 
- * @note This function swaps the two elements in stack A if they are not
- * already sorted.
- */
-void	fast_sort(t_data *data)
-{
-	int	a;
-	int	b;
-
-	a = data->a->value;
-	b = data->a->next->value;
-	if (b > a)
-		sa(data, 1);
-}
-
-/**
- * @brief Sorts a stack of three elements.
- * 
- * @param data The data structure containing the stacks.
- * 
- * @note This function sorts the three elements in stack A using a series
- * of swaps and rotations.
- */
-void	quick_sort(t_data *data)
-{
-	int	a;
-	int	b;
-	int	c;
-
-	a = data->a->value;
-	b = data->a->next->value;
-	c = data->a->next->next->value;
-	if (a > b && b < c && a < c)
-		sa(data, 1);
-	else if (a > b && b > c)
-	{
-		sa(data, 1);
-		rra(data, 1);
-	}
-	else if (a > b && b < c && a > c)
-		ra(data, 1);
-	else if (a < b && b > c && a < c)
-	{
-		sa(data, 1);
-		ra(data, 1);
-	}
-	else if (a < b && b > c && a > c)
-		rra(data, 1);
 }
 
 void	middle_sort(t_data *data)
