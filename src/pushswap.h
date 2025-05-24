@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:44:49 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/24 15:29:05 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/24 16:31:17 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,4 +103,9 @@ void	quick_sort(t_data *data);
 void	sort_small_stack(t_data *data);
 t_stack	*find_min_node(t_stack *stack);
 int		get_node_position(t_stack *stack, t_stack *target);
+
+// sorting3.c
+void	chunk_sort(t_data *data);
+void	split_chunk(t_data *data, int i, int chunk_size, int chunk_count);
+int		still_has_elements(t_stack *stack, int start_index, int end_index);
 #endif

@@ -6,11 +6,23 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 14:07:30 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/24 15:36:52 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/24 16:55:48 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+
+static void	print_stack(t_stack *stack, char name)
+{
+	t_stack	*current = stack;
+
+	printf("Stack %c:\n", name);
+	while (current)
+	{
+		printf("%d\n", current->value);
+		current = current->next;
+	}
+}
 
 int	main(int argc, char **argv)
 {
@@ -33,8 +45,12 @@ int	main(int argc, char **argv)
 		sort_small_stack(data);
 	else if (data->size_a <= 50)
 		middle_sort(data);
+	else if (data->size_a <= 100)
+		chunk_sort(data);
 	else
 		radix_sorting(data);
+	print_stack(data->a, 'A');
+	print_stack(data->b, 'B');
 	ft_exit_success(data, NULL);
 	return (EXIT_SUCCESS);
 }
