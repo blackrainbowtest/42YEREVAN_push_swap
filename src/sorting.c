@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 15:21:19 by root              #+#    #+#             */
-/*   Updated: 2025/05/24 15:27:08 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/24 15:34:01 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	middle_sort(t_data *data)
 		target = NULL;
 		while (current)
 		{
-			if (current->index == next_index++)
+			if (current->index == next_index)
 			{
 				target = current;
 				break ;
@@ -67,6 +67,7 @@ void	middle_sort(t_data *data)
 			break ;
 		best_move_to_top_a(data, target);
 		pb(data);
+		next_index++;
 	}
 	while (data->size_b > 0)
 		pa(data);

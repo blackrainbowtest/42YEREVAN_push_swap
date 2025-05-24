@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 14:07:30 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/22 21:49:13 by root             ###   ########.fr       */
+/*   Updated: 2025/05/24 15:36:52 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 		quick_sort(data);
 	else if (data->size_a < 6)
 		sort_small_stack(data);
-	else if (data->size_a < 100)
+	else if (data->size_a <= 50)
 		middle_sort(data);
 	else
 		radix_sorting(data);
