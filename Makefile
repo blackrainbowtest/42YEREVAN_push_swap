@@ -11,7 +11,8 @@ VERBOSE ?= 0 # 0 = no, 1 = yes
 
 # sources
 SRCS := src/main.c src/init.c src/utils_error.c src/parsing.c src/utils_checkers.c src/indexing.c\
-		src/op_push.c src/op_reverse.c src/op_rotate.c src/op_swap.c src/sorting.c src/sorting2.c
+		src/op_push.c src/op_reverse.c src/op_rotate.c src/op_swap.c src/sorting.c src/sorting2.c\
+		src/sorting3.c
 OBJS := $(SRCS:.c=.o)
 
 # libraries
