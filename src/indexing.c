@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 18:54:00 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/19 21:05:49 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/24 15:30:49 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,8 @@ int	find_index(int *arr, int len, int value)
 }
 
 /**
- * @brief Finds the next direction for neighbor the given index in the sorted array.
+ * @brief Finds the next direction for neighbor the given index in 
+ * the sorted array.
  * 
  * This function counts the number of elements in the original array that are
  * greater than the value at the specified index in the sorted array.
@@ -121,14 +122,14 @@ int	find_index(int *arr, int len, int value)
  */
 int	find_next_direction(t_arrays *arr, int i, int index)
 {
-	int	next_value_index;
+	int	n_v_i;
 
 	if (index + 1 >= arr->size)
 		return (0);
-	next_value_index = find_index(arr->values, arr->size, arr->sorted[index + 1]);
-	if (next_value_index == -1)
+	n_v_i = find_index(arr->values, arr->size, arr->sorted[index + 1]);
+	if (n_v_i == -1)
 		return (0);
-	if (next_value_index > i)
+	if (n_v_i > i)
 		return (1);
 	else
 		return (-1);

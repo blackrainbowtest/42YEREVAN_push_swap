@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 15:21:19 by root              #+#    #+#             */
-/*   Updated: 2025/05/22 20:26:33 by root             ###   ########.fr       */
+/*   Updated: 2025/05/24 15:27:08 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ void	radix_sorting(t_data *data)
 {
 	int	max_bits;
 	int	max_index;
+	int	size;
 	int	i;
+	int	j;
 
 	max_bits = 0;
 	max_index = data->max_size - 1;
@@ -25,8 +27,8 @@ void	radix_sorting(t_data *data)
 	i = 0;
 	while (i < max_bits)
 	{
-		int	j = 0;
-		int	size = data->size_a;
+		j = 0;
+		size = data->size_a;
 		while (j < size)
 		{
 			if (((data->a->index >> i) & 1) == 0)
@@ -54,18 +56,17 @@ void	middle_sort(t_data *data)
 		target = NULL;
 		while (current)
 		{
-			if (current->index == next_index)
+			if (current->index == next_index++)
 			{
 				target = current;
-				break;
+				break ;
 			}
 			current = current->next;
 		}
 		if (!target)
-			break;
+			break ;
 		best_move_to_top_a(data, target);
 		pb(data);
-		next_index++;
 	}
 	while (data->size_b > 0)
 		pa(data);
@@ -73,9 +74,9 @@ void	middle_sort(t_data *data)
 
 void	best_move_to_top_a(t_data *data, t_stack *node)
 {
-	int	pos;
-	int	size;
-	t_stack *temp;
+	int		pos;
+	int		size;
+	t_stack	*temp;
 
 	pos = 0;
 	temp = data->a;

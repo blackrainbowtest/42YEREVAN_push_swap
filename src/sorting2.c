@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 21:51:00 by root              #+#    #+#             */
-/*   Updated: 2025/05/22 21:46:28 by root             ###   ########.fr       */
+/*   Updated: 2025/05/24 15:25:24 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,9 @@ void	sort_small_stack(t_data *data)
 
 t_stack	*find_min_node(t_stack *stack)
 {
-	t_stack *min = stack;
+	t_stack	*min;
+
+	min = stack;
 	while (stack)
 	{
 		if (stack->index < min->index)
@@ -105,7 +107,9 @@ t_stack	*find_min_node(t_stack *stack)
 
 int	get_node_position(t_stack *stack, t_stack *target)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (stack && stack != target)
 	{
 		stack = stack->next;

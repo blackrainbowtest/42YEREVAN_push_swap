@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:44:49 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/22 21:47:18 by root             ###   ########.fr       */
+/*   Updated: 2025/05/24 15:29:05 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,11 @@ typedef struct s_data
 	int			max_size;
 }				t_data;
 
-/**
-*
-*/
-typedef struct s_arrays {
-    int *values;
-    int *sorted;
-    int size;
+typedef struct s_arrays
+{
+	int			*values;
+	int			*sorted;
+	int			size;
 }				t_arrays;
 
 // utils_error.c
@@ -104,7 +102,5 @@ void	fast_sort(t_data *data);
 void	quick_sort(t_data *data);
 void	sort_small_stack(t_data *data);
 t_stack	*find_min_node(t_stack *stack);
-int	get_node_position(t_stack *stack, t_stack *target);
-
-
+int		get_node_position(t_stack *stack, t_stack *target);
 #endif

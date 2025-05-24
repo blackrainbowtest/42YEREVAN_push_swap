@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 14:07:39 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/19 21:00:08 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/24 15:29:19 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ t_stack	*init_stack_node(int value, int index, int next_direction)
 
 void	fill_stack_a(t_data *data, int *values, int *sorted)
 {
-	int		i;
-	int		index;
-	int		next_direction;
-	t_stack	*new;
+	int			i;
+	int			index;
+	int			next_direction;
+	t_stack		*new;
 	t_arrays	arr;
 
 	arr.values = values;
