@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 14:07:30 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/25 17:22:22 by root             ###   ########.fr       */
+/*   Updated: 2025/05/25 22:35:02 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 		quick_sort(data);
 	else if (data->size_a < 6)
 		sort_small_stack(data);
-	else if (data->size_a <= 50)
+	else if (data->size_a < 50)
 		middle_sort(data);
 	else if (data->size_a <= 500)
 		chunk_sort(data);
