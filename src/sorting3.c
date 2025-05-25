@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 15:42:16 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/25 16:12:45 by root             ###   ########.fr       */
+/*   Updated: 2025/05/26 00:46:20 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,30 +55,6 @@ void	split_chunk(t_data *data, int i, int chunk_size, int chunk_count)
 		}
 	}
 }
-
-// void	return_sorted_to_a(t_data *data)
-// {
-// 	t_stack	*max_node;
-// 	int		pos;
-
-
-// 	while (data->size_b > 0)
-// 	{
-// 		max_node = find_max_node(data->b);
-// 		pos = get_node_position(data->b, max_node);
-// 		if (pos <= data->size_b / 2)
-// 		{
-// 			while (data->b != max_node)
-// 				rb(data, 1);
-// 		}
-// 		else
-// 		{
-// 			while (data->b != max_node)
-// 				rrb(data, 1);
-// 		}
-// 		pa(data);
-// 	}
-// }
 
 void	return_sorted_to_a(t_data *data)
 {
@@ -169,13 +145,18 @@ void	move_stacks(t_data *data, int cost_a, int cost_b)
 	}
 	// остатки по отдельности
 	while (cost_a > 0)
-	{ ra(data, 1); cost_a--; }
+	{
+		ra(data, 1);
+		cost_a--;
+	}
 	while (cost_a < 0)
-	{ rra(data, 1); cost_a++; }
+	{
+		rra(data, 1); cost_a++;
+	}
 	while (cost_b > 0)
-	{ rb(data, 1); cost_b--; }
+		{rb(data, 1); cost_b--;}
 	while (cost_b < 0)
-	{ rrb(data, 1); cost_b++; }
+		{rrb(data, 1); cost_b++;}
 }
 
 int	still_has_elements(t_stack *stack, int start_index, int end_index)
@@ -189,24 +170,13 @@ int	still_has_elements(t_stack *stack, int start_index, int end_index)
 	return (0);
 }
 
-// t_stack	*find_max_node(t_stack *stack)
-// {
-// 	t_stack *max = stack;
-
-// 	while (stack)
-// 	{
-// 		if (stack->index > max->index)
-// 			max = stack;
-// 		stack = stack->next;
-// 	}
-// 	return (max);
-// }
-
 void	rotate_a_to_min(t_data *data)
 {
-	t_stack *min = find_min_node(data->a);
-	int pos = get_node_position(data->a, min);
+	t_stack	*min;
+	int		pos;
 
+	min = find_min_node(data->a);
+	pos = get_node_position(data->a, min);
 	if (pos <= data->size_a / 2)
 	{
 		while (data->a != min)
