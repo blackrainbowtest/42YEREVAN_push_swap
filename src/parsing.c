@@ -6,12 +6,24 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 14:07:51 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/18 14:26:55 by root             ###   ########.fr       */
+/*   Updated: 2025/05/25 18:14:41 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
+/**
+* @brief Get all values from command line arguments.
+*
+* This function checks if the program is called with a single argument
+* containing space-separated values or multiple arguments.
+*
+* @param argc The number of command line arguments.
+* @param argv The array of command line arguments.
+*
+* @return A dynamically allocated array of strings containing all values,
+*         or NULL if memory allocation fails.
+*/
 char	**ft_get_all_values(int argc, char **argv)
 {
 	char	**all_values;
@@ -39,6 +51,17 @@ char	**ft_get_all_values(int argc, char **argv)
 	return (all_values);
 }
 
+/**
+* @brief Check if the array has duplicate values.
+*
+* This function iterates through the array and checks if any value appears
+* more than once. If a duplicate is found, it returns 1; otherwise, it returns 0.
+*
+* @param arr The array of integers to check for duplicates.
+* @param size The size of the array.
+*
+* @return 1 if duplicates are found, 0 otherwise.
+*/
 int	has_duplicates(int *arr, int size)
 {
 	int	i;
@@ -59,8 +82,18 @@ int	has_duplicates(int *arr, int size)
 	return (0);
 }
 
-/*
-** some info here soon
+/**
+* @brief Parse command line arguments and fill the data structure.
+*
+* This function retrieves all values from the command line arguments,
+* checks them for validity, sorts them, and fills the stack 'a' in the
+* provided data structure. It handles memory allocation and error checking.
+*
+* @param data The data structure to fill with parsed values.
+* @param argc The number of command line arguments.
+* @param argv The array of command line arguments.
+*
+* @return void
 */
 void	parse_and_fill(t_data *data, int argc, char **argv)
 {
