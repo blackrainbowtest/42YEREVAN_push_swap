@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:44:49 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/24 16:31:17 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/25 11:15:47 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,13 @@ typedef struct s_arrays
 	int			*sorted;
 	int			size;
 }				t_arrays;
+
+typedef struct s_move {
+	int			a_rot;
+	int			b_rot;
+	int			total_cost;
+	t_stack		*b_node;
+}				t_move;
 
 // utils_error.c
 char	**ft_free(char **split);
@@ -108,4 +115,8 @@ int		get_node_position(t_stack *stack, t_stack *target);
 void	chunk_sort(t_data *data);
 void	split_chunk(t_data *data, int i, int chunk_size, int chunk_count);
 int		still_has_elements(t_stack *stack, int start_index, int end_index);
+void	return_sorted_to_a(t_data *data);
+t_stack	*find_max_node(t_stack *stack);
+
+void	print_stack(t_stack *stack, char name);
 #endif
