@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:44:49 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/25 11:15:47 by root             ###   ########.fr       */
+/*   Updated: 2025/05/25 17:22:55 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ typedef struct s_stack
 {
 	int				value;
 	int				index;
+	int				cost_a;
+	int				cost_b;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 	int				next_direction;
@@ -43,12 +45,17 @@ typedef struct s_arrays
 	int			size;
 }				t_arrays;
 
-typedef struct s_move {
-	int			a_rot;
-	int			b_rot;
-	int			total_cost;
-	t_stack		*b_node;
-}				t_move;
+// indexing.c
+int		*copy_and_sort(int *src, int len);
+void	bubble_sort(int *arr, int len);
+int		find_index(int *arr, int len, int value);
+int		find_next_direction(t_arrays *arr, int i, int index);
+
+// init.c
+void	init_data(t_data *data);
+void	fill_stack_a(t_data *data, int *values, int *sorted);
+void	stack_add_back(t_stack **stack, t_stack *new);
+t_stack	*init_stack_node(int value, int index, int next_direction);
 
 // utils_error.c
 char	**ft_free(char **split);
@@ -63,22 +70,13 @@ int		ft_arrlen(char **arr);
 int		is_sorted(t_stack *stack);
 void	ft_only_digits(char **values, t_data *data, int ind);
 
-// init.c
-void	init_data(t_data *data);
-void	fill_stack_a(t_data *data, int *values, int *sorted);
-void	stack_add_back(t_stack **stack, t_stack *new);
-t_stack	*init_stack_node(int value, int index, int next_direction);
 
 // parsing.c
 void	parse_and_fill(t_data *data, int argc, char **argv);
 char	**ft_get_all_values(int argc, char **argv);
 int		has_duplicates(int *arr, int size);
 
-// indexing.c
-int		*copy_and_sort(int *src, int len);
-void	bubble_sort(int *arr, int len);
-int		find_index(int *arr, int len, int value);
-int		find_next_direction(t_arrays *arr, int i, int index);
+
 
 // op_swap.c
 void	sa(t_data *data, int print);
@@ -116,7 +114,10 @@ void	chunk_sort(t_data *data);
 void	split_chunk(t_data *data, int i, int chunk_size, int chunk_count);
 int		still_has_elements(t_stack *stack, int start_index, int end_index);
 void	return_sorted_to_a(t_data *data);
-t_stack	*find_max_node(t_stack *stack);
-
-void	print_stack(t_stack *stack, char name);
+// t_stack	*find_max_node(t_stack *stack);
+int	get_target_position(t_stack *a, int index_b);
+void	calculate_costs(t_data *data);
+t_stack *find_cheapest_node(t_stack *b);
+void	move_stacks(t_data *data, int cost_a, int cost_b);
+void	rotate_a_to_min(t_data *data);
 #endif

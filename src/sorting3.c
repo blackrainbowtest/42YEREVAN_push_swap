@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 15:42:16 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/25 12:28:57 by root             ###   ########.fr       */
+/*   Updated: 2025/05/25 16:12:45 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	chunk_sort(t_data *data)
 	int	chunk_count;
 	int	i;
 
-	chunk_count = (int)(data->max_size * 0.05);
+	chunk_count = (int)(data->max_size * 0.01);
 	if (chunk_count < 1)
 		chunk_count = 1;
 	chunk_size = data->max_size / chunk_count;
@@ -29,6 +29,7 @@ void	chunk_sort(t_data *data)
 		i++;
 	}
 	return_sorted_to_a(data);
+	rotate_a_to_min(data);
 }
 
 void	split_chunk(t_data *data, int i, int chunk_size, int chunk_count)
@@ -55,28 +56,126 @@ void	split_chunk(t_data *data, int i, int chunk_size, int chunk_count)
 	}
 }
 
+// void	return_sorted_to_a(t_data *data)
+// {
+// 	t_stack	*max_node;
+// 	int		pos;
+
+
+// 	while (data->size_b > 0)
+// 	{
+// 		max_node = find_max_node(data->b);
+// 		pos = get_node_position(data->b, max_node);
+// 		if (pos <= data->size_b / 2)
+// 		{
+// 			while (data->b != max_node)
+// 				rb(data, 1);
+// 		}
+// 		else
+// 		{
+// 			while (data->b != max_node)
+// 				rrb(data, 1);
+// 		}
+// 		pa(data);
+// 	}
+// }
+
 void	return_sorted_to_a(t_data *data)
 {
-	t_stack	*max_node;
-	int		pos;
-
+	t_stack	*cheapest;
+	int		cost_a;
+	int		cost_b;
 
 	while (data->size_b > 0)
 	{
-		max_node = find_max_node(data->b);
-		pos = get_node_position(data->b, max_node);
-		if (pos <= data->size_b / 2)
-		{
-			while (data->b != max_node)
-				rb(data, 1);
-		}
-		else
-		{
-			while (data->b != max_node)
-				rrb(data, 1);
-		}
+		calculate_costs(data);
+		cheapest = find_cheapest_node(data->b);
+		if (!cheapest)
+			return ;
+		cost_a = cheapest->cost_a;
+		cost_b = cheapest->cost_b;
+		move_stacks(data, cost_a, cost_b);
 		pa(data);
 	}
+}
+
+int	get_target_position(t_stack *a, int index_b)
+{
+	t_stack *current = a;
+	t_stack *best = NULL;
+	int best_index = __INT_MAX__;
+
+	while (current)
+	{
+		if (current->index > index_b && current->index < best_index)
+		{
+			best_index = current->index;
+			best = current;
+		}
+		current = current->next;
+	}
+	if (best)
+		return get_node_position(a, best);
+	return get_node_position(a, find_min_node(a));
+}
+
+void	calculate_costs(t_data *data)
+{
+	t_stack *b = data->b;
+	int pos_b = 0;
+
+	while (b)
+	{
+		b->cost_b = pos_b <= data->size_b / 2 ? pos_b : pos_b - data->size_b;
+		int target_pos = get_target_position(data->a, b->index);
+		b->cost_a = target_pos <= data->size_a / 2 ? target_pos : target_pos - data->size_a;
+		b = b->next;
+		pos_b++;
+	}
+}
+
+t_stack *find_cheapest_node(t_stack *b)
+{
+	t_stack *cheapest = b;
+	int min_cost = abs(b->cost_a) + abs(b->cost_b);
+
+	while (b)
+	{
+		int total = abs(b->cost_a) + abs(b->cost_b);
+		if (total < min_cost)
+		{
+			min_cost = total;
+			cheapest = b;
+		}
+		b = b->next;
+	}
+	return cheapest;
+}
+
+void	move_stacks(t_data *data, int cost_a, int cost_b)
+{
+	// одновременно в одну сторону
+	while (cost_a > 0 && cost_b > 0)
+	{
+		rr(data);
+		cost_a--;
+		cost_b--;
+	}
+	while (cost_a < 0 && cost_b < 0)
+	{
+		rrr(data);
+		cost_a++;
+		cost_b++;
+	}
+	// остатки по отдельности
+	while (cost_a > 0)
+	{ ra(data, 1); cost_a--; }
+	while (cost_a < 0)
+	{ rra(data, 1); cost_a++; }
+	while (cost_b > 0)
+	{ rb(data, 1); cost_b--; }
+	while (cost_b < 0)
+	{ rrb(data, 1); cost_b++; }
 }
 
 int	still_has_elements(t_stack *stack, int start_index, int end_index)
@@ -90,15 +189,32 @@ int	still_has_elements(t_stack *stack, int start_index, int end_index)
 	return (0);
 }
 
-t_stack	*find_max_node(t_stack *stack)
-{
-	t_stack *max = stack;
+// t_stack	*find_max_node(t_stack *stack)
+// {
+// 	t_stack *max = stack;
 
-	while (stack)
+// 	while (stack)
+// 	{
+// 		if (stack->index > max->index)
+// 			max = stack;
+// 		stack = stack->next;
+// 	}
+// 	return (max);
+// }
+
+void	rotate_a_to_min(t_data *data)
+{
+	t_stack *min = find_min_node(data->a);
+	int pos = get_node_position(data->a, min);
+
+	if (pos <= data->size_a / 2)
 	{
-		if (stack->index > max->index)
-			max = stack;
-		stack = stack->next;
+		while (data->a != min)
+			ra(data, 1);
 	}
-	return (max);
+	else
+	{
+		while (data->a != min)
+			rra(data, 1);
+	}
 }

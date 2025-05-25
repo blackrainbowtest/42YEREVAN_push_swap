@@ -3,28 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 14:07:39 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/24 15:29:19 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/25 17:23:51 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-/**
- * @brief Initializes the data structure for the push_swap program.
- * 
- * This function sets the initial values for the data structure, including
- * 
- * @note data->a - Pointer to the first element of stack a.
- * @note data->b - Pointer to the first element of stack b.
- * @note data->size_a - Size of stack a.
- * @note data->size_b - Size of stack b.
- * @note data->max_size - Maximum size of the stacks.
- * @note data->next_direction - Direction for the next operation.
- * 0 - not set, 1 - left, 2 - right.
- */
 void	init_data(t_data *data)
 {
 	data->a = NULL;
