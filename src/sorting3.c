@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 15:42:16 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/26 22:41:02 by root             ###   ########.fr       */
+/*   Updated: 2025/05/26 22:49:42 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,13 @@ void	return_sorted_to_a(t_data *data)
 
 int	get_target_position(t_stack *a, int index_b)
 {
-	t_stack *current = a;
-	t_stack *best = NULL;
-	int best_index = __INT_MAX__;
+	t_stack	*current;
+	t_stack	*best;
+	int		best_index;
 
+	current = a;
+	best = NULL;
+	best_index = INT_MAX;
 	while (current)
 	{
 		if (current->index > index_b && current->index < best_index)
@@ -91,50 +94,30 @@ int	get_target_position(t_stack *a, int index_b)
 		current = current->next;
 	}
 	if (best)
-		return get_node_position(a, best);
-	return get_node_position(a, find_min_node(a));
+		return (get_node_position(a, best));
+	return (get_node_position(a, find_min_node(a)));
 }
 
 void	calculate_costs(t_data *data)
 {
-	t_stack *b = data->b;
-	int pos_b = 0;
+	t_stack	*b;
+	int		pos_b;
+	int		target_pos;
 
+	b = data->b;
+	pos_b = 0;
 	while (b)
 	{
-		b->cost_b = pos_b <= data->size_b / 2 ? pos_b : pos_b - data->size_b;
-		int target_pos = get_target_position(data->a, b->index);
-		b->cost_a = target_pos <= data->size_a / 2 ? target_pos : target_pos - data->size_a;
+		if (pos_b <= data->size_b / 2)
+			b->cost_b = pos_b;
+		else
+			b->cost_b = pos_b - data->size_b;
+		target_pos = get_target_position(data->a, b->index);
+		if (target_pos <= data->size_a / 2)
+			b->cost_a = target_pos;
+		else
+			b->cost_a = target_pos - data->size_a;
 		b = b->next;
 		pos_b++;
 	}
-}
-
-void	move_stacks(t_data *data, int cost_a, int cost_b)
-{
-	while (cost_a > 0 && cost_b > 0)
-	{
-		rr(data);
-		cost_a--;
-		cost_b--;
-	}
-	while (cost_a < 0 && cost_b < 0)
-	{
-		rrr(data);
-		cost_a++;
-		cost_b++;
-	}
-	while (cost_a > 0)
-	{
-		ra(data, 1);
-		cost_a--;
-	}
-	while (cost_a < 0)
-	{
-		rra(data, 1); cost_a++;
-	}
-	while (cost_b > 0)
-		{rb(data, 1); cost_b--;}
-	while (cost_b < 0)
-		{rrb(data, 1); cost_b++;}
 }
