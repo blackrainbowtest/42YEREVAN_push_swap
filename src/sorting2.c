@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 21:51:00 by root              #+#    #+#             */
-/*   Updated: 2025/05/24 15:25:24 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/26 21:30:07 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,18 @@ void	quick_sort(t_data *data)
 		rra(data, 1);
 }
 
+/**
+* @brief Sorts a small stack of 4 or 5 elements.
+*
+* This function first pushes elements from stack A to stack B until only
+* 3 elements remain in stack A. It then sorts the remaining elements using
+* `quick_sort`. After sorting, it pushes the elements back from stack B to
+* stack A in the correct order.
+*
+* @param data The data structure containing the stacks to be sorted.
+*
+* @return void
+*/
 void	sort_small_stack(t_data *data)
 {
 	int		push_count;
@@ -91,6 +103,16 @@ void	sort_small_stack(t_data *data)
 		pa(data);
 }
 
+/**
+* @brief Finds the node with the minimum index in the stack.
+*
+* This function iterates through the stack and returns the node with the
+* smallest index value. If the stack is empty, it returns NULL.
+*
+* @param stack The stack to search for the minimum node.
+*
+* @return A pointer to the node with the minimum index, or NULL if the stack is empty.
+*/
 t_stack	*find_min_node(t_stack *stack)
 {
 	t_stack	*min;
@@ -105,6 +127,17 @@ t_stack	*find_min_node(t_stack *stack)
 	return (min);
 }
 
+/**
+* @brief Gets the position of a target node in the stack.
+*
+* This function traverses the stack and returns the index of the target node.
+* If the target node is not found, it returns the index of the last node.
+*
+* @param stack The stack to search in.
+* @param target The target node whose position is to be found.
+*
+* @return The index of the target node in the stack, or -1 if not found.
+*/
 int	get_node_position(t_stack *stack, t_stack *target)
 {
 	int	i;

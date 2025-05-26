@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 15:21:19 by root              #+#    #+#             */
-/*   Updated: 2025/05/25 22:41:20 by root             ###   ########.fr       */
+/*   Updated: 2025/05/26 21:28:44 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,23 @@ static void	process_current_bit(t_data *data, int bit)
 			ra(data, 1);
 		j++;
 	}
+}
+
+static t_stack	*find_target_node(t_stack *current, int next_index)
+{
+	t_stack	*target;
+
+	target = NULL;
+	while (current)
+	{
+		if (current->index == next_index)
+		{
+			target = current;
+			break ;
+		}
+		current = current->next;
+	}
+	return (target);
 }
 
 /**
@@ -96,16 +113,7 @@ void	middle_sort(t_data *data)
 	while (next_index < data->max_size)
 	{
 		current = data->a;
-		target = NULL;
-		while (current)
-		{
-			if (current->index == next_index)
-			{
-				target = current;
-				break ;
-			}
-			current = current->next;
-		}
+		target = find_target_node(current, next_index);
 		if (!target)
 			break ;
 		best_move_to_top_a(data, target);
