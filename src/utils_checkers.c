@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_checkers.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 18:55:53 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/19 20:01:55 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/26 22:27:36 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,15 +94,11 @@ int	*ft_check_values(char **unchecked_values, t_data *data)
 	while (i < len)
 	{
 		ft_only_digits(unchecked_values, data, i);
-		if (!ft_atoi_safe(unchecked_values[i], &int_values[i]))
+		if (!ft_atoi_safe(unchecked_values[i], &int_values[i])
+			|| !is_valid_int_range(int_values[i]))
 		{
 			free(int_values);
 			ft_exit_error(data, unchecked_values);
-		}
-		if (int_values[i] > INT_MAX || int_values[i++] < INT_MIN)
-		{
-			free(int_values);
-			return (NULL);
 		}
 	}
 	data->max_size = len;

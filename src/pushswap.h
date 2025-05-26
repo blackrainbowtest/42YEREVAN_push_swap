@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:44:49 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/25 18:17:02 by root             ###   ########.fr       */
+/*   Updated: 2025/05/26 22:41:17 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,13 +96,11 @@ int		get_node_position(t_stack *stack, t_stack *target);
 // sorting3.c
 void	chunk_sort(t_data *data);
 void	split_chunk(t_data *data, int i, int chunk_size, int chunk_count);
-int		still_has_elements(t_stack *stack, int start_index, int end_index);
+
 void	return_sorted_to_a(t_data *data);
 int		get_target_position(t_stack *a, int index_b);
 void	calculate_costs(t_data *data);
-t_stack	*find_cheapest_node(t_stack *b);
 void	move_stacks(t_data *data, int cost_a, int cost_b);
-void	rotate_a_to_min(t_data *data);
 
 // utils_checkers.c
 int		*ft_check_values(char **values, t_data *data);
@@ -116,4 +114,10 @@ void	ft_error(void);
 void	ft_exit_error(t_data *data, void *ptr);
 void	ft_free_stack(t_stack **stack);
 void	ft_exit_success(t_data *data, void *ptr);
+
+// utils.c
+int		is_valid_int_range(int n);
+int		still_has_elements(t_stack *stack, int start_index, int end_index);
+void	rotate_a_to_min(t_data *data);
+t_stack	*find_cheapest_node(t_stack *b);
 #endif

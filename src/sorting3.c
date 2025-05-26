@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 15:42:16 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/26 00:46:20 by root             ###   ########.fr       */
+/*   Updated: 2025/05/26 22:41:02 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,27 +110,8 @@ void	calculate_costs(t_data *data)
 	}
 }
 
-t_stack *find_cheapest_node(t_stack *b)
-{
-	t_stack *cheapest = b;
-	int min_cost = abs(b->cost_a) + abs(b->cost_b);
-
-	while (b)
-	{
-		int total = abs(b->cost_a) + abs(b->cost_b);
-		if (total < min_cost)
-		{
-			min_cost = total;
-			cheapest = b;
-		}
-		b = b->next;
-	}
-	return cheapest;
-}
-
 void	move_stacks(t_data *data, int cost_a, int cost_b)
 {
-	// одновременно в одну сторону
 	while (cost_a > 0 && cost_b > 0)
 	{
 		rr(data);
@@ -143,7 +124,6 @@ void	move_stacks(t_data *data, int cost_a, int cost_b)
 		cost_a++;
 		cost_b++;
 	}
-	// остатки по отдельности
 	while (cost_a > 0)
 	{
 		ra(data, 1);
@@ -157,34 +137,4 @@ void	move_stacks(t_data *data, int cost_a, int cost_b)
 		{rb(data, 1); cost_b--;}
 	while (cost_b < 0)
 		{rrb(data, 1); cost_b++;}
-}
-
-int	still_has_elements(t_stack *stack, int start_index, int end_index)
-{
-	while (stack)
-	{
-		if (stack->index >= start_index && stack->index <= end_index)
-			return (1);
-		stack = stack->next;
-	}
-	return (0);
-}
-
-void	rotate_a_to_min(t_data *data)
-{
-	t_stack	*min;
-	int		pos;
-
-	min = find_min_node(data->a);
-	pos = get_node_position(data->a, min);
-	if (pos <= data->size_a / 2)
-	{
-		while (data->a != min)
-			ra(data, 1);
-	}
-	else
-	{
-		while (data->a != min)
-			rra(data, 1);
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 21:51:00 by root              #+#    #+#             */
-/*   Updated: 2025/05/26 21:30:07 by root             ###   ########.fr       */
+/*   Updated: 2025/05/26 22:27:05 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,8 @@ void	sort_small_stack(t_data *data)
 *
 * @param stack The stack to search for the minimum node.
 *
-* @return A pointer to the node with the minimum index, or NULL if the stack is empty.
+* @return A pointer to the node with the minimum index, 
+* or NULL if the stack is empty.
 */
 t_stack	*find_min_node(t_stack *stack)
 {
