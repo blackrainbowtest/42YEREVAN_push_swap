@@ -18,7 +18,7 @@ QUIET = $(if $(filter 0,$(VERBOSE)),@,)
 SRCS := src/push_swap.c src/init.c src/utils_error.c src/parsing.c src/utils_checkers.c src/indexing.c\
 		src/op_push.c src/op_reverse.c src/op_rotate.c src/op_swap.c src/sorting.c src/sorting2.c\
 		src/sorting3.c src/sorting4.c src/utils.c
-BONUS_SRCS := bonus/checker.c
+BONUS_SRCS := bonus/checker.c bonus/utils_exit.c boonus/utils_free.c
 
 OBJS := $(SRCS:.c=.o)
 BONUS_OBJS := $(BONUS_SRCS:.c=.o)
@@ -77,18 +77,20 @@ val: all
 	-valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(ARGS100)
 	$(QUIET)$(MAKE) clean
 
-test_checker_ok: bonus
-	@./push_swap $(ARGS) | ./checker $(ARGS)
+chok: bonus
+	-$(QUIET)./push_swap $(ARGS) | ./checker $(ARGS)
+	$(QUIET)$(MAKE) clean
 
-test_checker_ko: bonus
-	@echo "pb\npb\nsa\npa\npa" | ./checker $(ARGS)
+chko: bonus
+	-$(QUIET)echo "pb\npb\nsa\npa\npa" | ./checker $(ARGS)
+	$(QUIET)$(MAKE) clean
 
-val_checker_ok: bonus
-	@./push_swap $(ARGS) > .commands.txt
-	valgrind --leak-check=full --show-leak-kinds=all ./checker $(ARGS) < .commands.txt
+val_chok: bonus
+	-$(QUIET)./push_swap $(ARGS) > .commands.txt
+	-valgrind --leak-check=full --show-leak-kinds=all ./checker $(ARGS) < .commands.txt
 	$(RM) .commands.txt
 
-val_checker_ko: bonus
+val_chko: bonus
 	echo "pb\npb\nsa\npa\npa" | valgrind --leak-check=full --show-leak-kinds=all ./checker $(ARGS)
 
 .PHONY: all clean fclean re test
