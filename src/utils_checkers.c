@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_checkers.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 18:55:53 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/26 22:27:36 by root             ###   ########.fr       */
+/*   Updated: 2025/05/27 18:14:24 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int	*ft_check_values(char **unchecked_values, t_data *data)
 			free(int_values);
 			ft_exit_error(data, unchecked_values);
 		}
+		i++;
 	}
 	data->max_size = len;
 	data->size_a = len;
