@@ -58,22 +58,37 @@ fclean: clean
 
 re: fclean all
 
+ARGS := 1 2 3
+ARGS100 := "67 29 78 77 22 80 75 89 55 3 91 72 60 64 32 86 27 50 99 88 7 15 12 2 92 94 90 38 54 66 31 21 16 42 34 9 81 56 58 14 97 4 59 11 35 18 17 83 8 47 100 84 49 62 63 73 46 25 5 13 98 96 79 28 23 71 68 69 30 6 82 65 51 10 36 20 70 61 48 76 53 74 1 39 26 57 41 37 44 43 33 52 93 87 19 85 95 45 40 24"
 # test
 test: all
 ifeq ($(LOGS),1)
 ifeq ($(WC),1)
-	-$(QUIET)./$(NAME) "67 29 78 77 22 80 75 89 55 3 91 72 60 64 32 86 27 50 99 88 7 15 12 2 92 94 90 38 54 66 31 21 16 42 34 9 81 56 58 14 97 4 59 11 35 18 17 83 8 47 100 84 49 62 63 73 46 25 5 13 98 96 79 28 23 71 68 69 30 6 82 65 51 10 36 20 70 61 48 76 53 74 1 39 26 57 41 37 44 43 33 52 93 87 19 85 95 45 40 24" | wc -l
+	-$(QUIET)./$(NAME) $(ARGS100) | wc -l
 else
-	-$(QUIET)./$(NAME) "67 29 78 77 22 80 75 89 55 3 91 72 60 64 32 86 27 50 99 88 7 15 12 2 92 94 90 38 54 66 31 21 16 42 34 9 81 56 58 14 97 4 59 11 35 18 17 83 8 47 100 84 49 62 63 73 46 25 5 13 98 96 79 28 23 71 68 69 30 6 82 65 51 10 36 20 70 61 48 76 53 74 1 39 26 57 41 37 44 43 33 52 93 87 19 85 95 45 40 24"
+	-$(QUIET)./$(NAME) $(ARGS100)
 endif
 else
-	-$(QUIET)./$(NAME) "4 -5 1 2 3" > /dev/null
+	-$(QUIET)./$(NAME) $(ARGS100) > /dev/null
 endif
 	$(QUIET)$(MAKE) clean
 
 val: all
-	-valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) "3 2 1"
-	-valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) 4 5 1 2 3
+	-valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(ARGS100)
 	$(QUIET)$(MAKE) clean
+
+test_checker_ok: bonus
+	@./push_swap $(ARGS) | ./checker $(ARGS)
+
+test_checker_ko: bonus
+	@echo "pb\npb\nsa\npa\npa" | ./checker $(ARGS)
+
+val_checker_ok: bonus
+	@./push_swap $(ARGS) > .commands.txt
+	valgrind --leak-check=full --show-leak-kinds=all ./checker $(ARGS) < .commands.txt
+	$(RM) .commands.txt
+
+val_checker_ko: bonus
+	echo "pb\npb\nsa\npa\npa" | valgrind --leak-check=full --show-leak-kinds=all ./checker $(ARGS)
 
 .PHONY: all clean fclean re test
