@@ -18,7 +18,8 @@ QUIET = $(if $(filter 0,$(VERBOSE)),@,)
 SRCS := src/push_swap.c src/init.c src/utils_error.c src/parsing.c src/utils_checkers.c src/indexing.c\
 		src/op_push.c src/op_reverse.c src/op_rotate.c src/op_swap.c src/sorting.c src/sorting2.c\
 		src/sorting3.c src/sorting4.c src/utils.c
-BONUS_SRCS := bonus/checker.c bonus/utils_exit.c boonus/utils_free.c
+BONUS_SRCS := bonus/checker.c bonus/utils_exit.c bonus/utils_free.c bonus/init.c bonus/parsing.c bonus/utils_checkers.c\
+		bonus/utils_sort.c
 
 OBJS := $(SRCS:.c=.o)
 BONUS_OBJS := $(BONUS_SRCS:.c=.o)

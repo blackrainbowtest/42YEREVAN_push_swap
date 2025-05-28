@@ -18,4 +18,5 @@ void	exit_error(t_data *data, void *ptr)
 {
 	multiply_clear(data, ptr);
 	write(2, "Error\n", 6);
+	exit(EXIT_FAILURE);
 }
