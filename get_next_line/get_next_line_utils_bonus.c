@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aramarak <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 14:01:21 by aramarak          #+#    #+#             */
-/*   Updated: 2025/03/23 14:01:23 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/30 00:13:01 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
 /*
-* ft_strlen: returns the length of the string
+* ft_strlen_gnl: returns the length of the string
 */
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen_gnl(const char *s)
 {
 	size_t	i;
 
@@ -46,17 +46,17 @@ char	*ft_strchr(const char *s, int c)
 }
 
 /*
-* ft_strjoin: concatenates two strings
+* ft_strjoin_gnl: concatenates two strings
 */
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_gnl(char *s1, char *s2)
 {
 	char	*result;
 	size_t	len1;
 	size_t	len2;
 	char	*temp;
 
-	len1 = (s1 != NULL) * ft_strlen(s1);
-	len2 = (s2 != NULL) * ft_strlen(s2);
+	len1 = (s1 != NULL) * ft_strlen_gnl(s1);
+	len2 = (s2 != NULL) * ft_strlen_gnl(s2);
 	result = malloc(sizeof(char) * (len1 + len2 + 1));
 	if (!result)
 		return (NULL);
@@ -117,7 +117,7 @@ char	*ft_remove_read_line(char *s)
 		free(s);
 		return (NULL);
 	}
-	result = malloc(ft_strlen(s) - i + 1);
+	result = malloc(ft_strlen_gnl(s) - i + 1);
 	if (!result)
 		return (NULL);
 	i++;

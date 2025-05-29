@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 18:50:12 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/28 11:28:10 by root             ###   ########.fr       */
+/*   Updated: 2025/05/30 00:15:11 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CHECKER_H
 
 # include "../libft/libft.h"
+# include "../get_next_line/get_next_line_bonus.h"
 # include <limits.h>
 # include <stdio.h>
 
@@ -40,6 +41,25 @@ void	fill_stack_a(t_data *data, int *values, int *sorted);
 t_stack	*init_stack_node(int value, int index);
 int		find_index(int *arr, int len, int value);
 int		*copy_and_sort(int *src, int len);
+
+// op_push.c
+void	pa(t_data *data, int print);
+void	pb(t_data *data, int print);
+
+// op_reverse.c
+void	rra(t_data *data, int print);
+void	rrb(t_data *data, int print);
+void	rrr(t_data *data, int print);
+
+// op_rotate.c
+void	ra(t_data *data, int print);
+void	rb(t_data *data, int print);
+void	rr(t_data *data, int print);
+
+// op_swap.c
+void	sa(t_data *data, int print);
+void	sb(t_data *data, int print);
+void	ss(t_data *data, int print);
 
 // parsing.c
 char	**ft_get_all_values(int argc, char **argv);

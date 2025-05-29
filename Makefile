@@ -19,7 +19,7 @@ SRCS := src/push_swap.c src/init.c src/utils_error.c src/parsing.c src/utils_che
 		src/op_push.c src/op_reverse.c src/op_rotate.c src/op_swap.c src/sorting.c src/sorting2.c\
 		src/sorting3.c src/sorting4.c src/utils.c
 BONUS_SRCS := bonus/checker.c bonus/utils_exit.c bonus/utils_free.c bonus/init.c bonus/parsing.c bonus/utils_checkers.c\
-		bonus/utils_sort.c
+		bonus/utils_sort.c bonus/op_push.c bonus/op_reverse.c bonus/op_rotate.c bonus/op_swap.c
 
 OBJS := $(SRCS:.c=.o)
 BONUS_OBJS := $(BONUS_SRCS:.c=.o)
@@ -35,8 +35,8 @@ bonus: $(BONUS_NAME)
 $(NAME): $(OBJS) $(LIBFT)
 	$(QUIET)$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
-$(BONUS_NAME): $(BONUS_OBJS) $(LIBFT)
-	$(QUIET)$(CC) $(CFLAGS) $(BONUS_OBJS) $(LIBFT) -o $(BONUS_NAME)
+$(BONUS_NAME): $(BONUS_OBJS) $(LIBFT) $(GNL)
+	$(QUIET)$(CC) $(CFLAGS) $(BONUS_OBJS) $(LIBFT) $(GNL) -o $(BONUS_NAME)
 
 %.o: %.c
 	$(QUIET)$(CC) $(CFLAGS) -c $< -o $@

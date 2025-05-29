@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aramarak <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 14:01:12 by aramarak          #+#    #+#             */
-/*   Updated: 2025/03/23 14:01:14 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/29 21:32:19 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-void	ft_delete_node(t_list **p_head, int fd)
+void	ft_delete_node(t_gnllist **p_head, int fd)
 {
-	t_list	*prev;
-	t_list	*curr;
+	t_gnllist	*prev;
+	t_gnllist	*curr;
 
 	prev = NULL;
 	curr = *p_head;
@@ -40,9 +40,9 @@ void	ft_delete_node(t_list **p_head, int fd)
 	}
 }
 
-t_list	*get_or_create_node(t_list **p_head, int fd)
+t_gnllist	*get_or_create_node(t_gnllist **p_head, int fd)
 {
-	t_list	*node;
+	t_gnllist	*node;
 
 	node = *p_head;
 	while (node)
@@ -51,7 +51,7 @@ t_list	*get_or_create_node(t_list **p_head, int fd)
 			return (node);
 		node = node->next;
 	}
-	node = (t_list *)malloc(sizeof(t_list));
+	node = (t_gnllist *)malloc(sizeof(t_gnllist));
 	if (node == NULL)
 		return (NULL);
 	node->fd = fd;
@@ -67,7 +67,7 @@ t_list	*get_or_create_node(t_list **p_head, int fd)
 	return (node);
 }
 
-char	*ft_read_line(t_list **head, t_list *node, ssize_t bytes_read, int fd)
+char	*ft_read_line(t_gnllist **head, t_gnllist *node, ssize_t bytes_read, int fd)
 {
 	char	*buffer;
 
@@ -92,7 +92,7 @@ char	*ft_read_line(t_list **head, t_list *node, ssize_t bytes_read, int fd)
 	return (buffer);
 }
 
-ssize_t	read_and_append_data(int fd, t_list *node, char *buffer)
+ssize_t	read_and_append_data(int fd, t_gnllist *node, char *buffer)
 {
 	ssize_t	bytes_read;
 	char	*temp;
@@ -108,7 +108,7 @@ ssize_t	read_and_append_data(int fd, t_list *node, char *buffer)
 			break ;
 		buffer[bytes_read] = '\0';
 		temp = node->str_buf;
-		node->str_buf = ft_strjoin(node->str_buf, buffer);
+		node->str_buf = ft_strjoin_gnl(node->str_buf, buffer);
 		if (!node->str_buf)
 		{
 			free(temp);
@@ -123,8 +123,8 @@ ssize_t	read_and_append_data(int fd, t_list *node, char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static t_list	*head;
-	t_list			*node;
+	static t_gnllist	*head;
+	t_gnllist			*node;
 	char			*buffer;
 	ssize_t			bytes_read;
 	char			*temp;
