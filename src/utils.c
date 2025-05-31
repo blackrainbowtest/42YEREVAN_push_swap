@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 22:26:39 by root              #+#    #+#             */
-/*   Updated: 2025/05/26 22:42:43 by root             ###   ########.fr       */
+/*   Updated: 2025/05/31 21:30:55 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,13 @@ void	rotate_a_to_min(t_data *data)
 	}
 }
 
+int	ft_abs(int n)
+{
+	if (n < 0)
+		return (-n);
+	retuen (n);
+}
+
 t_stack	*find_cheapest_node(t_stack *b)
 {
 	t_stack	*cheapest;
@@ -54,10 +61,10 @@ t_stack	*find_cheapest_node(t_stack *b)
 	int		total;
 
 	cheapest = b;
-	min_cost = abs(b->cost_a) + abs(b->cost_b);
+	min_cost = ft_abs(b->cost_a) + ft_abs(b->cost_b);
 	while (b)
 	{
-		total = abs(b->cost_a) + abs(b->cost_b);
+		total = ft_abs(b->cost_a) + ft_abs(b->cost_b);
 		if (total < min_cost)
 		{
 			min_cost = total;

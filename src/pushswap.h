@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:44:49 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/29 21:29:45 by root             ###   ########.fr       */
+/*   Updated: 2025/05/31 21:31:37 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,4 +120,5 @@ int		is_valid_int_range(int n);
 int		still_has_elements(t_stack *stack, int start_index, int end_index);
 void	rotate_a_to_min(t_data *data);
 t_stack	*find_cheapest_node(t_stack *b);
+int		ft_abs(int n);
 #endif
