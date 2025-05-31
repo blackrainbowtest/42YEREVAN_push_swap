@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 18:50:19 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/31 12:36:38 by root             ###   ########.fr       */
+/*   Updated: 2025/05/31 14:58:04 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,26 +36,38 @@ static void	data_processing(t_data *data, char *cmd)
 		ra(data, 0);
 	else if (!ft_strcmp(cmd, "rr\n"))
 		rr(data, 0);
+	else if (!ft_strcmp(cmd, "rra\n"))
+		rra(data, 0);
+	else if (!ft_strcmp(cmd, "rrb\n"))
+		rra(data, 0);
+	else if (!ft_strcmp(cmd, "rrr\n"))
+		rrr(data, 0);
+	else if (!ft_strcmp(cmd, "pa\n"))
+		pa(data, 0);
+	else if (!ft_strcmp(cmd, "pb\n"))
+		pa(data, 0);
 	else
 		exit_error(data, cmd);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_data  *data;
+	t_data	*data;
 	char	*line;
 
 	if (argc < 2)
-		  exit_error(NULL, NULL);
+		exit_error(NULL, NULL);
 	data = malloc(sizeof(t_data));
 	if (!data)
-		  exit_error(NULL, NULL);
+		exit_error(NULL, NULL);
 	init_data(data);
-	  parse_and_fill(data, argc, argv);
-	while ((line = get_next_line(0)))
+	parse_and_fill(data, argc, argv);
+	line = get_next_line(0);
+	while (line)
 	{
 		data_processing(data, line);
 		free(line);
+		line = get_next_line(0);
 	}
 	if (is_sorted(data->a) && data->size_b == 0)
 		exit_ok(data, NULL);
