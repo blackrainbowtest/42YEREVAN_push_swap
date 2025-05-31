@@ -1,150 +1,44 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/23 14:01:12 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/29 21:32:19 by root             ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "get_next_line_bonus.h"
 
-void	ft_delete_node(t_gnllist **p_head, int fd)
+char	*read_stroke(int fd, char *store)
 {
-	t_gnllist	*prev;
-	t_gnllist	*curr;
+	char	*buf;
+	int		count;
+	char	*new_store;
 
-	prev = NULL;
-	curr = *p_head;
-	while (curr != NULL)
+	buf = malloc(BUFFER_SIZE + 1);
+	if (!buf)
+		return (NULL);
+	count = 1;
+	while ((!ft_strchr(store, '\n')) && (count > 0))
 	{
-		if (curr->fd == fd)
+		count = read(fd, buf, BUFFER_SIZE);
+		if (count == -1)
 		{
-			if (prev)
-				prev->next = curr->next;
-			else
-				*p_head = curr->next;
-			if (curr->str_buf)
-			{
-				free(curr->str_buf);
-				curr->str_buf = NULL;
-			}
-			free(curr);
-			return ;
+			free(buf);
+			free(store);
+			return (NULL);
 		}
-		prev = curr;
-		curr = curr->next;
+		buf[count] = '\0';
+		new_store = ft_strjoin_gnl(store, buf);
+		free(store);
+		store = new_store;
 	}
-}
-
-t_gnllist	*get_or_create_node(t_gnllist **p_head, int fd)
-{
-	t_gnllist	*node;
-
-	node = *p_head;
-	while (node)
-	{
-		if (node->fd == fd)
-			return (node);
-		node = node->next;
-	}
-	node = (t_gnllist *)malloc(sizeof(t_gnllist));
-	if (node == NULL)
-		return (NULL);
-	node->fd = fd;
-	node->str_buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!node->str_buf)
-	{
-		free(node);
-		return (NULL);
-	}
-	node->str_buf[0] = '\0';
-	node->next = *p_head;
-	*p_head = node;
-	return (node);
-}
-
-char	*ft_read_line(t_gnllist **head, t_gnllist *node, ssize_t bytes_read, int fd)
-{
-	char	*buffer;
-
-	if (bytes_read <= 0 && (!node->str_buf || node->str_buf[0] == '\0'))
-	{
-		free(node->str_buf);
-		node->str_buf = NULL;
-		ft_delete_node(head, fd);
-		return (NULL);
-	}
-	if (bytes_read == 0 && node->str_buf)
-	{
-		buffer = ft_get_first_line(node->str_buf);
-		free(node->str_buf);
-		node->str_buf = NULL;
-		return (buffer);
-	}
-	if (!node->str_buf || node->str_buf[0] == '\0')
-		return (NULL);
-	buffer = ft_get_first_line(node->str_buf);
-	node->str_buf = ft_remove_read_line(node->str_buf);
-	return (buffer);
-}
-
-ssize_t	read_and_append_data(int fd, t_gnllist *node, char *buffer)
-{
-	ssize_t	bytes_read;
-	char	*temp;
-
-	if (fd < 0 || !node || !buffer)
-		return (-1);
-	while (!ft_strchr(node->str_buf, '\n'))
-	{
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read < 0)
-			return (-1);
-		if (bytes_read == 0)
-			break ;
-		buffer[bytes_read] = '\0';
-		temp = node->str_buf;
-		node->str_buf = ft_strjoin_gnl(node->str_buf, buffer);
-		if (!node->str_buf)
-		{
-			free(temp);
-			temp = NULL;
-			return (-1);
-		}
-		free(temp);
-		temp = NULL;
-	}
-	return (bytes_read);
+	free(buf);
+	return (store);
 }
 
 char	*get_next_line(int fd)
 {
-	static t_gnllist	*head;
-	t_gnllist			*node;
-	char			*buffer;
-	ssize_t			bytes_read;
-	char			*temp;
+	static char	*store[1024];
+	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	node = get_or_create_node(&head, fd);
-	if (!node)
+	store[fd] = read_stroke(fd, store[fd]);
+	if (!store[fd])
 		return (NULL);
-	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buffer)
-		return (NULL);
-	bytes_read = read_and_append_data(fd, node, buffer);
-	free(buffer);
-	buffer = NULL;
-	if (bytes_read == -1 || !node->str_buf || !*node->str_buf)
-	{
-		ft_delete_node(&head, fd);
-		return (NULL);
-	}
-	temp = ft_read_line(&head, node, bytes_read, fd);
-	return (temp);
+	line = ft_find_line(store[fd]);
+	store[fd] = ft_save_line(store[fd]);
+	return (line);
 }

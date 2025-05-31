@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 18:50:19 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/31 14:58:04 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/05/31 15:58:17 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,25 @@ static void	data_processing(t_data *data, char *cmd)
 	if (!ft_strcmp(cmd, "sa\n"))
 		sa(data, 0);
 	else if (!ft_strcmp(cmd, "sb\n"))
-		sa(data, 0);
+		sb(data, 0);
 	else if (!ft_strcmp(cmd, "ss\n"))
 		ss(data, 0);
 	else if (!ft_strcmp(cmd, "ra\n"))
 		ra(data, 0);
 	else if (!ft_strcmp(cmd, "rb\n"))
-		ra(data, 0);
+		rb(data, 0);
 	else if (!ft_strcmp(cmd, "rr\n"))
 		rr(data, 0);
 	else if (!ft_strcmp(cmd, "rra\n"))
 		rra(data, 0);
 	else if (!ft_strcmp(cmd, "rrb\n"))
-		rra(data, 0);
+		rrb(data, 0);
 	else if (!ft_strcmp(cmd, "rrr\n"))
 		rrr(data, 0);
 	else if (!ft_strcmp(cmd, "pa\n"))
 		pa(data, 0);
 	else if (!ft_strcmp(cmd, "pb\n"))
-		pa(data, 0);
+		pb(data, 0);
 	else
 		exit_error(data, cmd);
 }
