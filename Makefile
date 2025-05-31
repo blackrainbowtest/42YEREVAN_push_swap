@@ -42,9 +42,11 @@ $(BONUS_NAME): $(BONUS_OBJS) $(LIBFT) $(GNL)
 	$(QUIET)$(CC) $(CFLAGS) -c $< -o $@
 
 $(LIBFT):
+	$(QUIET)make -C libft fclean
 	$(QUIET)make -C libft
 
 $(GNL):
+	$(QUIET)make -C get_next_line fclean
 	$(QUIET)make -C get_next_line
 
 clean:
@@ -59,7 +61,7 @@ fclean: clean
 
 re: fclean all
 
-ARGS := 1 2 3
+ARGS := 1 2 3 4
 ARGS100 := "67 29 78 77 22 80 75 89 55 3 91 72 60 64 32 86 27 50 99 88 7 15 12 2 92 94 90 38 54 66 31 21 16 42 34 9 81 56 58 14 97 4 59 11 35 18 17 83 8 47 100 84 49 62 63 73 46 25 5 13 98 96 79 28 23 71 68 69 30 6 82 65 51 10 36 20 70 61 48 76 53 74 1 39 26 57 41 37 44 43 33 52 93 87 19 85 95 45 40 24"
 # test
 test: all
@@ -83,15 +85,17 @@ chok: bonus
 	$(QUIET)$(MAKE) clean
 
 chko: bonus
-	-$(QUIET)echo "pb\npb\nsa\npa\npa" | ./checker $(ARGS)
+	-$(QUIET)echo "pb\nsa\npa" | ./checker $(ARGS)
 	$(QUIET)$(MAKE) clean
 
 val_chok: bonus
 	-$(QUIET)./push_swap $(ARGS) > .commands.txt
 	-valgrind --leak-check=full --show-leak-kinds=all ./checker $(ARGS) < .commands.txt
 	$(RM) .commands.txt
+	$(QUIET)$(MAKE) clean
 
 val_chko: bonus
-	echo "pb\npb\nsa\npa\npa" | valgrind --leak-check=full --show-leak-kinds=all ./checker $(ARGS)
+	echo "pb\nsa\npa" | valgrind --leak-check=full --show-leak-kinds=all ./checker $(ARGS)
+	$(QUIET)$(MAKE) clean
 
 .PHONY: all clean fclean re test

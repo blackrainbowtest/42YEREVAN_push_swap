@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 18:50:12 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/30 00:15:11 by root             ###   ########.fr       */
+/*   Updated: 2025/05/31 15:04:12 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	**ft_get_all_values(int argc, char **argv);
 int		has_duplicates(int *arr, int size);
 void	parse_and_fill(t_data *data, int argc, char **argv);
 void	stack_add_back(t_stack **stack, t_stack *new);
-int	is_valid_int_range(int n);
+int		is_valid_int_range(int n);
 
 // utils_checkers.c
 int		is_sorted(t_stack *stack);

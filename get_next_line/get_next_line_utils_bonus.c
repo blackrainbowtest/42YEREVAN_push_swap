@@ -3,128 +3,116 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/23 14:01:21 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/30 00:13:01 by root             ###   ########.fr       */
+/*   Created: 2025/05/31 16:01:17 by aramarak          #+#    #+#             */
+/*   Updated: 2025/05/31 16:01:18 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-/*
-* ft_strlen_gnl: returns the length of the string
-*/
 size_t	ft_strlen_gnl(const char *s)
 {
-	size_t	i;
+	int	i;
 
-	if (!s)
-		return (0);
 	i = 0;
+	if (s == NULL)
+		return (0);
 	while (s[i] != '\0')
 		i++;
 	return (i);
 }
 
-/*
-* ft_strchr: returns a pointer to the first occ of the chr c in the string s
-*/
+char	*ft_strjoin_gnl(char *s, char *d)
+{
+	size_t	index;
+	size_t	s_len;
+	size_t	d_len;
+	char	*result;
+
+	s_len = (s != NULL) * ft_strlen_gnl(s);
+	d_len = (d != NULL) * ft_strlen_gnl(d);
+	result = (char *)malloc(s_len + d_len + 1);
+	index = 0;
+	if (!result)
+		return (NULL);
+	while (s && *s)
+		result[index++] = *s++;
+	while (d && *d)
+		result[index++] = *d++;
+	result[index] = '\0';
+	return (result);
+}
+
 char	*ft_strchr(const char *s, int c)
 {
-	if (!s)
+	if (s == NULL)
 		return (NULL);
-	while (*s)
+	while (*s != '\0')
 	{
-		if (*s == (char)c)
+		if (((unsigned char)*s) == c)
+		{
 			return ((char *)s);
+		}
 		s++;
 	}
-	if (c == '\0')
+	if ((unsigned char)*s == c)
 		return ((char *)s);
 	return (NULL);
 }
 
-/*
-* ft_strjoin_gnl: concatenates two strings
-*/
-char	*ft_strjoin_gnl(char *s1, char *s2)
-{
-	char	*result;
-	size_t	len1;
-	size_t	len2;
-	char	*temp;
-
-	len1 = (s1 != NULL) * ft_strlen_gnl(s1);
-	len2 = (s2 != NULL) * ft_strlen_gnl(s2);
-	result = malloc(sizeof(char) * (len1 + len2 + 1));
-	if (!result)
-		return (NULL);
-	temp = result;
-	if (s1)
-	{
-		while (*s1)
-			*temp++ = *s1++;
-	}
-	if (s2)
-		while (*s2)
-			*temp++ = *s2++;
-	*temp = '\0';
-	return (result);
-}
-
-/*
-* ft_get_first_line: returns the first line of the string
-*/
-char	*ft_get_first_line(char *s)
+char	*ft_find_line(char *ptr)
 {
 	int		i;
-	char	*str;
+	int		j;
+	char	*cube;
 
-	if (!s || !s[0])
-		return (NULL);
 	i = 0;
-	while (s[i] && s[i] != '\n')
-		i++;
-	str = malloc(i + 2);
-	if (!str)
+	j = 0;
+	cube = 0;
+	if (!ptr || (ptr[0] == '\0'))
 		return (NULL);
-	str[i + 1] = '\0';
-	while (i >= 0)
+	while (ptr[i] && (ptr[i] != '\n'))
+		i++;
+	if (ptr[i] == '\n')
+		i++;
+	cube = malloc(i + 1);
+	if (!cube)
+		return (NULL);
+	while (j < i)
 	{
-		str[i] = s[i];
-		i--;
+		cube[j] = ptr[j];
+		j++;
 	}
-	return (str);
+	cube[j] = '\0';
+	return (cube);
 }
 
-/*
-* ft_remove_read_line: removes the first line of the string
-*/
-char	*ft_remove_read_line(char *s)
+char	*ft_save_line(char *set)
 {
-	char	*result;
+	char	*caze;
 	int		i;
 	int		j;
 
-	if (!s || !s[0])
-		return (NULL);
 	i = 0;
-	while (s[i] && s[i] != '\n')
+	j = 0;
+	if (!set)
+		return (NULL);
+	while (set[i] && (set[i] != '\n'))
 		i++;
-	if (!s[i])
+	if (!set[i])
 	{
-		free(s);
+		free(set);
 		return (NULL);
 	}
-	result = malloc(ft_strlen_gnl(s) - i + 1);
-	if (!result)
+	i += (set[i] == '\n');
+	caze = malloc(ft_strlen_gnl(set) - i + 1);
+	if (!caze)
 		return (NULL);
-	i++;
-	j = 0;
-	while (s[i])
-		result[j++] = s[i++];
-	result[j] = '\0';
-	free(s);
-	return (result);
+	while (set[i])
+		caze[j++] = set[i++];
+	caze[j] = '\0';
+	free(set);
+	return (caze);
 }
