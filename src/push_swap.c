@@ -12,19 +12,8 @@
 
 #include "pushswap.h"
 
-int	main(int argc, char **argv)
+static void	ft_sort_method(t_data *data)
 {
-	t_data	*data;
-
-	if (argc < 2)
-		ft_error();
-	data = malloc(sizeof(t_data));
-	if (!data)
-		ft_error();
-	init_data(data);
-	parse_and_fill(data, argc, argv);
-	if (is_sorted(data->a))
-		ft_exit_success(data, NULL);
 	if (data->size_a == 2)
 		fast_sort(data);
 	else if (data->size_a == 3)
@@ -37,6 +26,22 @@ int	main(int argc, char **argv)
 		chunk_sort(data);
 	else
 		radix_sorting(data);
+}
+
+int	main(int argc, char **argv)
+{
+	t_data	*data;
+
+	if (argc == 1)
+		ft_exit_success(NULL, NULL);
+	if (argc == 2 && argv[1][0] == '\0')
+		ft_error();
+	data = malloc(sizeof(t_data));
+	if (!data)
+		ft_error();
+	init_data(data);
+	parse_and_fill(data, argc, argv);
+	ft_sort_method(data);
 	ft_exit_success(data, NULL);
 	return (EXIT_SUCCESS);
 }
