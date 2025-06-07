@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 16:01:13 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/31 16:01:14 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/07 20:49:37 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h> 
-# include <stdio.h>
 
 char	*ft_strjoin_gnl(char *s, char *d);
 size_t	ft_strlen_gnl(const char *s);

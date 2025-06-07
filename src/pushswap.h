@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:44:49 by aramarak          #+#    #+#             */
-/*   Updated: 2025/06/07 18:54:58 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/07 21:28:15 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libft/libft.h"
 # include <limits.h>
+# include <stdio.h>
 
 // radix sort
 typedef struct s_stack
@@ -109,15 +110,17 @@ int		is_sorted(t_stack *stack);
 void	ft_only_digits(char **values, t_data *data, int ind, int *int_values);
 
 // utils_error.c
-void	*ft_free_any(void **ptr, int type);
 void	ft_exit_error_str(t_data *data, void *ptr);
 void	ft_exit_error(t_data *data, void *ptr);
 void	ft_free_stack(t_stack **stack);
 void	ft_exit_success(t_data *data, void *ptr);
 
 // utils.c
-int		is_valid_int_range(int n);
+int		is_valint(int n);
 int		still_has_elements(t_stack *stack, int start_index, int end_index);
 void	rotate_a_to_min(t_data *data);
 t_stack	*find_cheapest_node(t_stack *b);
+
+// utils2.c
+char	**ft_free_char(char **split);
 #endif

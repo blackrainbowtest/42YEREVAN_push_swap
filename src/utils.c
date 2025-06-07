@@ -6,13 +6,13 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 22:26:39 by root              #+#    #+#             */
-/*   Updated: 2025/06/07 17:28:49 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/07 20:45:39 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	is_valid_int_range(int n)
+int	is_valint(int n)
 {
 	return (n >= INT_MIN && n <= INT_MAX);
 }

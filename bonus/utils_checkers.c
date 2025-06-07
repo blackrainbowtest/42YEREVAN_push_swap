@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 15:03:19 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/31 15:03:20 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/07 20:45:39 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	ft_only_digits(char **values, t_data *data, int ind)
 	}
 }
 
-static int	ft_atoi_safe(const char *str, int *value)
+static int	atoi_safe(const char *str, int *value)
 {
 	long	result;
 	int		sign;
@@ -88,8 +88,8 @@ int	*ft_check_values(char **unchecked_values, t_data *data)
 	while (i < len)
 	{
 		ft_only_digits(unchecked_values, data, i);
-		if (!ft_atoi_safe(unchecked_values[i], &int_values[i])
-			|| !is_valid_int_range(int_values[i]))
+		if (!atoi_safe(unchecked_values[i], &int_values[i])
+			|| !is_valint(int_values[i]))
 		{
 			free(int_values);
 			exit_error(data, unchecked_values);

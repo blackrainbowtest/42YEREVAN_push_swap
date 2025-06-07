@@ -6,13 +6,13 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 15:03:14 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/31 15:03:15 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/07 20:45:39 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int	is_valid_int_range(int n)
+int	is_valint(int n)
 {
 	return (n >= INT_MIN && n <= INT_MAX);
 }

@@ -6,12 +6,16 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 14:07:30 by aramarak          #+#    #+#             */
-/*   Updated: 2025/06/07 18:54:50 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/07 20:48:07 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
+/**
+ * 
+ * I am sry for my shit core thx for understunding ;)
+ */
 static void	ft_sort_method(t_data *data)
 {
 	if (data->size_a == 1)
