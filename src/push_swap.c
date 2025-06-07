@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 14:07:30 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/27 18:12:30 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/07 17:29:20 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static void	ft_sort_method(t_data *data)
 {
+	if (data->size_a == 1)
+		ft_exit_success(data, NULL);
 	if (data->size_a == 2)
 		fast_sort(data);
 	else if (data->size_a == 3)
@@ -41,6 +43,8 @@ int	main(int argc, char **argv)
 		ft_error();
 	init_data(data);
 	parse_and_fill(data, argc, argv);
+	if (is_sorted(data->a) && data->size_b == 0)
+		ft_exit_success(data, NULL);
 	ft_sort_method(data);
 	ft_exit_success(data, NULL);
 	return (EXIT_SUCCESS);

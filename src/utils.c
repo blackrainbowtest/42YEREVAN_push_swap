@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 22:26:39 by root              #+#    #+#             */
-/*   Updated: 2025/05/31 21:30:55 by root             ###   ########.fr       */
+/*   Updated: 2025/06/07 17:28:49 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ void	rotate_a_to_min(t_data *data)
 	}
 }
 
-int	ft_abs(int n)
+static int	ft_abs(int n)
 {
 	if (n < 0)
 		return (-n);
-	retuen (n);
+	return (n);
 }
 
 t_stack	*find_cheapest_node(t_stack *b)

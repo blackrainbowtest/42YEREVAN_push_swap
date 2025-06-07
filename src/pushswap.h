@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:44:49 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/31 21:31:37 by root             ###   ########.fr       */
+/*   Updated: 2025/06/07 17:28:12 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	move_stacks(t_data *data, int cost_a, int cost_b);
 int		*ft_check_values(char **values, t_data *data);
 int		ft_arrlen(char **arr);
 int		is_sorted(t_stack *stack);
-void	ft_only_digits(char **values, t_data *data, int ind);
+void	ft_only_digits(char **values, t_data *data, int ind, int *int_values);
 
 // utils_error.c
 char	**ft_free(char **split);
@@ -120,5 +120,4 @@ int		is_valid_int_range(int n);
 int		still_has_elements(t_stack *stack, int start_index, int end_index);
 void	rotate_a_to_min(t_data *data);
 t_stack	*find_cheapest_node(t_stack *b);
-int		ft_abs(int n);
 #endif

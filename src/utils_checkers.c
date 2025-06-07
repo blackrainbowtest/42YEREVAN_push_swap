@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 18:55:53 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/27 18:14:24 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/07 17:27:29 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_arrlen(char **arr)
 	return (len);
 }
 
-void	ft_only_digits(char **values, t_data *data, int ind)
+void	ft_only_digits(char **values, t_data *data, int ind, int *int_values)
 {
 	int	i;
 
@@ -39,14 +39,14 @@ void	ft_only_digits(char **values, t_data *data, int ind)
 	if (!values[ind][i])
 	{
 		ft_free(values);
-		ft_exit_error(data, NULL);
+		ft_exit_error(data, int_values);
 	}
 	while (values[ind][i])
 	{
 		if (values[ind][i] < '0' || values[ind][i] > '9')
 		{
 			ft_free(values);
-			ft_exit_error(data, NULL);
+			ft_exit_error(data, int_values);
 		}
 		i++;
 	}
@@ -93,7 +93,7 @@ int	*ft_check_values(char **unchecked_values, t_data *data)
 	i = 0;
 	while (i < len)
 	{
-		ft_only_digits(unchecked_values, data, i);
+		ft_only_digits(unchecked_values, data, i, int_values);
 		if (!ft_atoi_safe(unchecked_values[i], &int_values[i])
 			|| !is_valid_int_range(int_values[i]))
 		{
