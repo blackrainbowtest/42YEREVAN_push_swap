@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:44:49 by aramarak          #+#    #+#             */
-/*   Updated: 2025/06/07 17:28:12 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/07 18:54:58 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,8 @@ int		is_sorted(t_stack *stack);
 void	ft_only_digits(char **values, t_data *data, int ind, int *int_values);
 
 // utils_error.c
-char	**ft_free(char **split);
-void	ft_error(void);
+void	*ft_free_any(void **ptr, int type);
+void	ft_exit_error_str(t_data *data, void *ptr);
 void	ft_exit_error(t_data *data, void *ptr);
 void	ft_free_stack(t_stack **stack);
 void	ft_exit_success(t_data *data, void *ptr);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 21:51:00 by root              #+#    #+#             */
-/*   Updated: 2025/05/26 22:27:05 by root             ###   ########.fr       */
+/*   Updated: 2025/06/07 18:55:07 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	fast_sort(t_data *data)
 
 	a = data->a->value;
 	b = data->a->next->value;
-	if (b > a)
+	if (b < a)
 		sa(data, 1);
 }
 

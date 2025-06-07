@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 14:08:06 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/18 16:42:45 by root             ###   ########.fr       */
+/*   Updated: 2025/06/07 18:55:19 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,18 @@
  *
  * @return This function does not return; it terminates the program.
  */
-void	ft_error(void)
+void	ft_exit_error_str(t_data *data, void *ptr)
 {
+	if (ptr)
+		ft_free_any(ptr, 0);
+	if (data)
+	{
+		if (data->a)
+			ft_free_stack(&data->a);
+		if (data->b)
+			ft_free_stack(&data->b);
+		free(data);
+	}
 	write(2, "Error\n", 6);
 	exit(EXIT_FAILURE);
 }
@@ -41,7 +51,7 @@ void	ft_error(void)
 void	ft_exit_error(t_data *data, void *ptr)
 {
 	if (ptr)
-		free(ptr);
+		ft_free_any(ptr, 1);
 	if (data)
 	{
 		if (data->a)
@@ -69,7 +79,7 @@ void	ft_exit_error(t_data *data, void *ptr)
 void	ft_exit_success(t_data *data, void *ptr)
 {
 	if (ptr)
-		free(ptr);
+		ft_free_any(ptr, 1);
 	if (data)
 	{
 		if (data->a)
@@ -104,26 +114,36 @@ void	ft_free_stack(t_stack **stack)
 }
 
 /**
- * @brief Frees a dynamically allocated array of strings.
- *
- * Iterates through a NULL-terminated array of strings, freeing each string,
- * then frees the array itself. Returns NULL for convenience.
- *
- * @param split The array of strings to be freed.
- * @return NULL (can be used to reset the pointer after freeing).
+ * @brief Frees memory allocated for a pointer or an array of pointers.
+ * 
+ * This function checks the type of the pointer:
+ * 
+ * @param ptr Pointer to the memory to be freed.
+ * @param type Type of the pointer: 1 for a single pointer, 2 for an array of pointers.
+ * 
+ * @return Returns NULL after freeing the memory.
+ * 
+ * @note If `ptr` is NULL or points to NULL, it does nothing and returns NULL.
  */
-char	**ft_free(char **split)
+void	*ft_free_any(void **ptr, int type)
 {
 	size_t	i;
 
-	if (!split)
+	if (!ptr || !*ptr)
 		return (NULL);
-	i = 0;
-	while (split[i])
+	if (type == 1)
 	{
-		free(split[i]);
-		i++;
+		free(*ptr);
 	}
-	free(split);
+	else
+	{
+		i = 0;
+		while (((char **)*ptr)[i])
+		{
+			free(((char **)*ptr)[i]);
+			i++;
+		}
+		free(*ptr);
+	}
 	return (NULL);
 }

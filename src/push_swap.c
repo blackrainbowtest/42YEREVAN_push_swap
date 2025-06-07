@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 14:07:30 by aramarak          #+#    #+#             */
-/*   Updated: 2025/06/07 17:29:20 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/07 18:54:50 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		ft_exit_success(NULL, NULL);
 	if (argc == 2 && argv[1][0] == '\0')
-		ft_error();
+		ft_exit_error(NULL, NULL);
 	data = malloc(sizeof(t_data));
 	if (!data)
-		ft_error();
+		ft_exit_error(NULL, NULL);
 	init_data(data);
 	parse_and_fill(data, argc, argv);
 	if (is_sorted(data->a) && data->size_b == 0)

@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 18:55:53 by aramarak          #+#    #+#             */
-/*   Updated: 2025/06/07 17:27:29 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/07 18:55:12 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ void	ft_only_digits(char **values, t_data *data, int ind, int *int_values)
 		i++;
 	if (!values[ind][i])
 	{
-		ft_free(values);
+		ft_free_any((void **)&values, 1);
 		ft_exit_error(data, int_values);
 	}
 	while (values[ind][i])
 	{
 		if (values[ind][i] < '0' || values[ind][i] > '9')
 		{
-			ft_free(values);
+			ft_free_any((void **)&values, 1);
 			ft_exit_error(data, int_values);
 		}
 		i++;
@@ -59,6 +59,8 @@ static int	ft_atoi_safe(const char *str, int *value)
 
 	result = 0;
 	sign = 1;
+	if (ft_strlen(str) > 11)
+		return (0);
 	while (*str == ' ' || ((*str >= 9) && (*str <= 13)))
 		str++;
 	if (*str == '-' || *str == '+')
@@ -97,7 +99,7 @@ int	*ft_check_values(char **unchecked_values, t_data *data)
 		if (!ft_atoi_safe(unchecked_values[i], &int_values[i])
 			|| !is_valid_int_range(int_values[i]))
 		{
-			free(int_values);
+			ft_free_any((void **)&int_values, 1);
 			ft_exit_error(data, unchecked_values);
 		}
 		i++;
